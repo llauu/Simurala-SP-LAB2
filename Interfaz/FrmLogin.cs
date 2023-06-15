@@ -8,7 +8,7 @@ namespace Interfaz {
 
         private void FrmLogin_Load(object sender, EventArgs e) {
             try {
-                // CARGAR USUARIOS
+                Sistema.CargarArchivos();
             }
             catch (Exception ex) {
                 MessageBox.Show($"Error al cargar el archivo json de usuarios. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -70,5 +70,14 @@ namespace Interfaz {
             lblError.Text = mensaje;
         }
 
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e) {
+            try {
+                Sistema.EscribirArchivos();
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Error al guardar los archivos. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+        }
     }
 }

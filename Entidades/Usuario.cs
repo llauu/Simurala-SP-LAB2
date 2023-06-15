@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Entidades {
-    public class Usuario {
+    public class Usuario : IPersona {
         private static int ultimoId;
 
         private int id;
@@ -38,6 +38,10 @@ namespace Entidades {
 
         public bool ChequearClave(string clave) {
             return clave == this.clave;
+        }
+
+        public override string ToString() {
+            return $"{this.nombre}";
         }
     }
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2rZQoODQ45WYE4omOGTxLwng5U/OJz0r6n3tUtHqpXNf5l93FuHGfxnBbEGzJtA291uFDOzNPO0cO0P9fL9gVA==",
+  "dgSpecHash": "F7rirQBykW+0JDje1gW+daH8Ywog/pQqqyR3/GY/bkb0vSfeohAAjGBzxquTLbS+uYtShRtX/AGMTGyMTnVK5g==",
   "success": true,
   "projectFilePath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Interfaz\\Interfaz.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\monse\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

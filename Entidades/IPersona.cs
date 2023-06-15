@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Entidades {
-    public interface Persona {
+    public interface IPersona {
         public abstract string Nombre { get; set; }
         public abstract string Apellido { get; set; }
-        public abstract string Usuario { get; set; }
 
         public abstract string ToString();
     }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Entidades {
-    public class Jugador : Persona{
+    public class Jugador : IPersona{
         private string? nombre;
         private string? apellido;
         private string? usuario;
@@ -35,6 +35,16 @@ namespace Entidades {
 
         public static bool operator !=(Jugador jugador1, Jugador jugador2) {
             return !(jugador1 == jugador2);
+        }
+
+        public override bool Equals(object? obj) {
+            Jugador? jugador = obj as Jugador;
+
+            return jugador is not null && this == jugador;
+        }
+
+        public override int GetHashCode() {
+            return this.usuario!.GetHashCode();
         }
 
         public override string ToString() {

@@ -2,9 +2,11 @@
 
 namespace Entidades {
     public static class Sistema {
-        private static List<Usuario> listaUsuarios;
-        private static List<Jugador> listaJugadores;
+        private static List<Usuario>? listaUsuarios;
+        private static List<Jugador>? listaJugadores;
         private static List<Partida> listaPartidas;
+        private static string rutaUsuariosJson;
+        private static string rutaJugadoresJson;
         private static string rutaImagenDadoUno;
         private static string rutaImagenDadoDos;
         private static string rutaImagenDadoTres;
@@ -28,19 +30,30 @@ namespace Entidades {
             listaJugadores = new List<Jugador>();
             listaPartidas = new List<Partida>();
 
+            rutaUsuariosJson = @"..\..\..\..\db\datosUsuarios.json";
+            rutaJugadoresJson = @"..\..\..\..\db\datosJugadores.json";
             rutaImagenDadoUno = @"..\..\..\..\Recursos\cara_dados\dados_uno.png";
             rutaImagenDadoDos = @"..\..\..\..\Recursos\cara_dados\dados_dos.png";
             rutaImagenDadoTres = @"..\..\..\..\Recursos\cara_dados\dados_tres.png";
             rutaImagenDadoCuatro = @"..\..\..\..\Recursos\cara_dados\dados_cuatro.png";
             rutaImagenDadoCinco = @"..\..\..\..\Recursos\cara_dados\dados_cinco.png";
             rutaImagenDadoSeis = @"..\..\..\..\Recursos\cara_dados\dados_seis.png";
+        }
 
-            listaUsuarios.Add(new Usuario("lautaro", "monserrat", "admin@", "123admin"));
+        /// <summary>
+        /// Lee los archivos en donde se encuentran los datos utilizados anteriormente
+        /// </summary>
+        public static void CargarArchivos() {
+            listaUsuarios = Archivos<Usuario>.LeerArchivoJson(listaUsuarios, rutaUsuariosJson);
+            listaJugadores = Archivos<Jugador>.LeerArchivoJson(listaJugadores, rutaJugadoresJson);
+        }
 
-            listaJugadores.Add(new Jugador("lautaro", "monserrat", "llauu"));
-            listaJugadores.Add(new Jugador("mario", "gomez", "marito12"));
-            listaJugadores.Add(new Jugador("felipe", "jaguer", "xXFeliXx"));
-            listaJugadores.Add(new Jugador("martin", "dicena", "ELMarto"));
+        /// <summary>
+        /// Escribe los datos en archivos json para tener permanencia de ellos
+        /// </summary>
+        public static void EscribirArchivos() {
+            Archivos<Usuario>.EscribirArchivoJson(listaUsuarios, rutaUsuariosJson);
+            Archivos<Jugador>.EscribirArchivoJson(listaJugadores, rutaJugadoresJson);
         }
 
         /// <summary>
