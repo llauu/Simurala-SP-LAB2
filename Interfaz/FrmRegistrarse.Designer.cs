@@ -273,6 +273,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnRegistrarse);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmRegistrarse";
             StartPosition = FormStartPosition.CenterParent;

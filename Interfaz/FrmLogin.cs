@@ -37,19 +37,20 @@ namespace Interfaz {
             string claveIngresada = this.txtClave.Text;
             int indiceUsuarioIngresado;
 
-            if (correoIngresado == String.Empty || claveIngresada == String.Empty) {
-                ActualizarMensajeDeError(this.imgError, this.lblError, "Debes ingresar un correo y/o contraseña.");
-            }
-            else {
-                indiceUsuarioIngresado = Sistema.IniciarSesion(correoIngresado, claveIngresada);
+            //if (correoIngresado == String.Empty || claveIngresada == String.Empty) {
+            //    ActualizarMensajeDeError(this.imgError, this.lblError, "Debes ingresar un correo y/o contraseña.");
+            //}
+            //else {
+            //    indiceUsuarioIngresado = Sistema.IniciarSesion(correoIngresado, claveIngresada);
 
-                if (indiceUsuarioIngresado >= 0) {
-                    AccederMenuPrincipal(indiceUsuarioIngresado);
-                }
-                else {
-                    ActualizarMensajeDeError(this.imgError, this.lblError, "La contraseña o el correo son incorrectos.");
-                }
-            }
+            //    if (indiceUsuarioIngresado >= 0) {
+            indiceUsuarioIngresado = 0; // BORRAR DESPUES, SOLO PARA PRUEBAS
+            AccederMenuPrincipal(indiceUsuarioIngresado);
+            //    }
+            //    else {
+            //        ActualizarMensajeDeError(this.imgError, this.lblError, "La contraseña o el correo son incorrectos.");
+            //    }
+            //}
         }
 
         private void AccederMenuPrincipal(int indiceUsuario) {

@@ -22,3 +22,4 @@ C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-wind
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.csproj.CopyComplete
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmMenuPrincipal.resources
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmCrearJugador.resources
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmCrearPartida.resources

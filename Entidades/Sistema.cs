@@ -1,16 +1,46 @@
-﻿namespace Entidades {
+﻿using System.Diagnostics;
+
+namespace Entidades {
     public static class Sistema {
         private static List<Usuario> listaUsuarios;
         private static List<Jugador> listaJugadores;
+        private static List<Partida> listaPartidas;
+        private static string rutaImagenDadoUno;
+        private static string rutaImagenDadoDos;
+        private static string rutaImagenDadoTres;
+        private static string rutaImagenDadoCuatro;
+        private static string rutaImagenDadoCinco;
+        private static string rutaImagenDadoSeis;
+
 
         public static List<Usuario> ListaUsuarios { get => listaUsuarios; }
         public static List<Jugador> ListaJugadores { get => listaJugadores; }
+        public static List<Partida> ListaPartidas { get => listaPartidas; }
+        public static string RutaImagenDadoUno { get => rutaImagenDadoUno; }
+        public static string RutaImagenDadoDos { get => rutaImagenDadoDos; }
+        public static string RutaImagenDadoTres { get => rutaImagenDadoTres; }
+        public static string RutaImagenDadoCuatro { get => rutaImagenDadoCuatro; }
+        public static string RutaImagenDadoCinco { get => rutaImagenDadoCinco; }
+        public static string RutaImagenDadoSeis { get => rutaImagenDadoSeis; }
 
         static Sistema() {
             listaUsuarios = new List<Usuario>();
             listaJugadores = new List<Jugador>();
+            listaPartidas = new List<Partida>();
+
+            rutaImagenDadoUno = @"..\..\..\..\Recursos\cara_dados\dados_uno.png";
+            rutaImagenDadoDos = @"..\..\..\..\Recursos\cara_dados\dados_dos.png";
+            rutaImagenDadoTres = @"..\..\..\..\Recursos\cara_dados\dados_tres.png";
+            rutaImagenDadoCuatro = @"..\..\..\..\Recursos\cara_dados\dados_cuatro.png";
+            rutaImagenDadoCinco = @"..\..\..\..\Recursos\cara_dados\dados_cinco.png";
+            rutaImagenDadoSeis = @"..\..\..\..\Recursos\cara_dados\dados_seis.png";
 
             listaUsuarios.Add(new Usuario("lautaro", "monserrat", "admin@", "123admin"));
+
+            listaJugadores.Add(new Jugador("lautaro", "monserrat", "llauu"));
+            listaJugadores.Add(new Jugador("mario", "gomez", "marito12"));
+            listaJugadores.Add(new Jugador("felipe", "jaguer", "xXFeliXx"));
+            listaJugadores.Add(new Jugador("martin", "dicena", "ELMarto"));
         }
 
         /// <summary>
@@ -54,11 +84,11 @@
             return seRegistro;
         }
 
-        public static bool CrearJugador(string nombre) {
+        public static bool CrearJugador(string nombre, string apellido, string usuario) {
             bool seCreo = false;
 
             if (listaUsuarios != null) {
-                Jugador jugadorCreado = new Jugador(nombre);
+                Jugador jugadorCreado = new Jugador(nombre, apellido, usuario);
                 listaJugadores.Add(jugadorCreado);
                 seCreo = true;
             }
@@ -66,12 +96,19 @@
             return seCreo;
         }
 
+        public static bool CrearPartida(Jugador jugador1, Jugador jugador2) {
+            bool seCreo = false;
 
+            if(Validador.ValidarJugadores(jugador1, jugador2)) {
+                Partida partidaCreada = new Partida(jugador1, jugador2);
+                listaPartidas.Add(partidaCreada);
+                jugador1.PartidaEnCurso = true;
+                jugador2.PartidaEnCurso = true;
+                seCreo = true;
+            }
 
-
-
-
-
+            return seCreo;
+        }
 
 
 

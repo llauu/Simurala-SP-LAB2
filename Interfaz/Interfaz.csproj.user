@@ -4,6 +4,9 @@
     <Compile Update="FrmCrearJugador.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmCrearPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

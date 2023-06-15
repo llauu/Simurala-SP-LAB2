@@ -41,6 +41,37 @@ namespace Entidades {
             return correoUnico;
         }
 
+        public static bool ValidarIdPartidaUnico(int id) {
+            bool idUnico = true;
+
+            if (Sistema.ListaPartidas != null) {
+                foreach (Partida partida in Sistema.ListaPartidas) {
+                    if (id == partida.Id) {
+                        idUnico = false;
+                        break;
+                    }
+                }
+            }
+
+            return idUnico;
+        }
+
+        public static bool ValidarJugadores(Jugador jugador1, Jugador jugador2) {
+            bool jugadorValido = true;
+
+            if(jugador1 == jugador2) {
+                jugadorValido = false;
+                throw new Exception("No se pueden seleccionar dos jugadores iguales.");
+            }
+
+            if(jugador1.PartidaEnCurso || jugador2.PartidaEnCurso) {
+                jugadorValido = false;
+                throw new Exception("No se pueden seleccionar jugadores con partidas en curso.");
+            }
+
+            return jugadorValido;
+        }
+
         public static string ValidarClaveValida(string clave) {
             if (string.IsNullOrEmpty(clave) || clave.Length < 8) {
                 throw new Exception("Clave no valida.");

@@ -17,10 +17,12 @@ namespace Interfaz {
 
         private void btn_Crear_Click(object sender, EventArgs e) {
             string nombre = this.txt_nombre.Text;
+            string apellido = this.txt_apellido.Text;
+            string usuario = this.txt_usuario.Text;
 
-            if (!String.IsNullOrEmpty(nombre)) {
+            if (!String.IsNullOrEmpty(nombre) && !String.IsNullOrEmpty(apellido) && !String.IsNullOrEmpty(usuario)) {
                 try {
-                    if (Sistema.CrearJugador(nombre)) {
+                    if (Sistema.CrearJugador(nombre, apellido, usuario)) {
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -30,8 +32,13 @@ namespace Interfaz {
                 }
             }
             else {
-                FrmLogin.ActualizarMensajeDeError(this.imgError, this.lblError, "Debe colocar un nombre para crear un jugador.");
+                FrmLogin.ActualizarMensajeDeError(this.imgError, this.lblError, "Debe completar todos los campos para crear un jugador.");
             }
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e) {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
