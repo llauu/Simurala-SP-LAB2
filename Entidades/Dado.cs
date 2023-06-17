@@ -10,7 +10,8 @@ namespace Entidades {
         private int ultimoValor;
 
         public Dado() {
-            dadoSeleccionado = false;
+            this.dadoSeleccionado = false;
+            this.ultimoValor = 0;
         }
 
         public bool DadoSeleccionado { get => dadoSeleccionado; set => dadoSeleccionado = value; }

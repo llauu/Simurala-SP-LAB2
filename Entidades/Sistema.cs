@@ -102,25 +102,24 @@ namespace Entidades {
 
             if (listaUsuarios != null) {
                 Jugador jugadorCreado = new Jugador(nombre, apellido, usuario);
-                listaJugadores.Add(jugadorCreado);
+                listaJugadores?.Add(jugadorCreado);
                 seCreo = true;
             }
 
             return seCreo;
         }
 
-        public static bool CrearPartida(Jugador jugador1, Jugador jugador2) {
-            bool seCreo = false;
+        public static Partida CrearPartida(Jugador jugador1, Jugador jugador2, Action<Dado[]> DelegadoMostrarDados, Action DelegadoCambioRegistro) {
+            Partida? partidaCreada = null;
 
-            if(Validador.ValidarJugadores(jugador1, jugador2)) {
-                Partida partidaCreada = new Partida(jugador1, jugador2);
+            if (Validador.ValidarJugadores(jugador1, jugador2)) {
+                partidaCreada = new Partida(jugador1, jugador2, DelegadoMostrarDados, DelegadoCambioRegistro);
                 listaPartidas.Add(partidaCreada);
                 jugador1.PartidaEnCurso = true;
                 jugador2.PartidaEnCurso = true;
-                seCreo = true;
             }
 
-            return seCreo;
+            return partidaCreada!;
         }
 
 

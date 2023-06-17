@@ -31,8 +31,12 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panelBotones = new Panel();
+            imgError = new PictureBox();
             btn_frenarJuego = new PictureBox();
+            lblError = new Label();
             btn_crearJuego = new PictureBox();
             btn_iniciarJuego = new PictureBox();
             btn_agregarJugador = new PictureBox();
@@ -49,11 +53,12 @@
             dgv_JugadasJ1 = new DataGridView();
             dgv_JugadasJ2 = new DataGridView();
             panel2 = new Panel();
-            label1 = new Label();
+            lbl_Jugador1 = new Label();
             panel3 = new Panel();
-            label2 = new Label();
+            lbl_Jugador2 = new Label();
             rtb_Jugadas = new RichTextBox();
             panelBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgError).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_frenarJuego).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_crearJuego).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_iniciarJuego).BeginInit();
@@ -75,7 +80,9 @@
             // panelBotones
             // 
             panelBotones.BackColor = Color.LightGray;
+            panelBotones.Controls.Add(imgError);
             panelBotones.Controls.Add(btn_frenarJuego);
+            panelBotones.Controls.Add(lblError);
             panelBotones.Controls.Add(btn_crearJuego);
             panelBotones.Controls.Add(btn_iniciarJuego);
             panelBotones.Controls.Add(btn_agregarJugador);
@@ -84,6 +91,17 @@
             panelBotones.Name = "panelBotones";
             panelBotones.Size = new Size(1280, 73);
             panelBotones.TabIndex = 0;
+            // 
+            // imgError
+            // 
+            imgError.Image = (Image)resources.GetObject("imgError.Image");
+            imgError.Location = new Point(113, 11);
+            imgError.Name = "imgError";
+            imgError.Size = new Size(22, 22);
+            imgError.SizeMode = PictureBoxSizeMode.Zoom;
+            imgError.TabIndex = 25;
+            imgError.TabStop = false;
+            imgError.Visible = false;
             // 
             // btn_frenarJuego
             // 
@@ -96,6 +114,18 @@
             btn_frenarJuego.SizeMode = PictureBoxSizeMode.Zoom;
             btn_frenarJuego.TabIndex = 5;
             btn_frenarJuego.TabStop = false;
+            btn_frenarJuego.Click += btn_frenarJuego_Click;
+            // 
+            // lblError
+            // 
+            lblError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblError.ForeColor = Color.IndianRed;
+            lblError.Location = new Point(141, 11);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(342, 52);
+            lblError.TabIndex = 26;
+            lblError.Text = "(error)";
+            lblError.Visible = false;
             // 
             // btn_crearJuego
             // 
@@ -149,8 +179,8 @@
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgv_Partidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Partidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -162,15 +192,20 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgv_Partidas.DefaultCellStyle = dataGridViewCellStyle2;
+            dgv_Partidas.EnableHeadersVisualStyles = false;
             dgv_Partidas.Location = new Point(38, 99);
             dgv_Partidas.MultiSelect = false;
             dgv_Partidas.Name = "dgv_Partidas";
             dgv_Partidas.ReadOnly = true;
             dgv_Partidas.RowHeadersVisible = false;
+            dataGridViewCellStyle3.SelectionBackColor = Color.PaleGreen;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dgv_Partidas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgv_Partidas.RowTemplate.Height = 25;
             dgv_Partidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_Partidas.Size = new Size(256, 346);
             dgv_Partidas.TabIndex = 1;
+            dgv_Partidas.CellClick += dgv_Partidas_CellClick;
             // 
             // panel1
             // 
@@ -268,26 +303,29 @@
             dgv_JugadasJ1.AllowUserToDeleteRows = false;
             dgv_JugadasJ1.AllowUserToResizeColumns = false;
             dgv_JugadasJ1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgv_JugadasJ1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgv_JugadasJ1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_JugadasJ1.BackgroundColor = Color.WhiteSmoke;
             dgv_JugadasJ1.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgv_JugadasJ1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgv_JugadasJ1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgv_JugadasJ1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Window;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgv_JugadasJ1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Window;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgv_JugadasJ1.DefaultCellStyle = dataGridViewCellStyle6;
+            dgv_JugadasJ1.EnableHeadersVisualStyles = false;
             dgv_JugadasJ1.Location = new Point(888, 100);
             dgv_JugadasJ1.MultiSelect = false;
             dgv_JugadasJ1.Name = "dgv_JugadasJ1";
@@ -296,6 +334,7 @@
             dgv_JugadasJ1.RowTemplate.Height = 25;
             dgv_JugadasJ1.Size = new Size(156, 208);
             dgv_JugadasJ1.TabIndex = 20;
+            dgv_JugadasJ1.RowPrePaint += dgv_JugadasJ1_RowPrePaint;
             // 
             // dgv_JugadasJ2
             // 
@@ -306,23 +345,24 @@
             dgv_JugadasJ2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_JugadasJ2.BackgroundColor = Color.WhiteSmoke;
             dgv_JugadasJ2.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv_JugadasJ2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgv_JugadasJ2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgv_JugadasJ2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgv_JugadasJ2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Window;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgv_JugadasJ2.DefaultCellStyle = dataGridViewCellStyle8;
+            dgv_JugadasJ2.EnableHeadersVisualStyles = false;
             dgv_JugadasJ2.Location = new Point(1085, 100);
             dgv_JugadasJ2.MultiSelect = false;
             dgv_JugadasJ2.Name = "dgv_JugadasJ2";
@@ -331,54 +371,55 @@
             dgv_JugadasJ2.RowTemplate.Height = 25;
             dgv_JugadasJ2.Size = new Size(156, 208);
             dgv_JugadasJ2.TabIndex = 21;
+            dgv_JugadasJ2.RowPrePaint += dgv_JugadasJ2_RowPrePaint;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.CornflowerBlue;
+            panel2.BackColor = Color.DarkSalmon;
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(lbl_Jugador1);
             panel2.Location = new Point(888, 56);
             panel2.Name = "panel2";
             panel2.Size = new Size(156, 44);
             panel2.TabIndex = 22;
             // 
-            // label1
+            // lbl_Jugador1
             // 
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(2, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(156, 37);
-            label1.TabIndex = 13;
-            label1.Text = "Jugador 1";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_Jugador1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Jugador1.Location = new Point(-1, 3);
+            lbl_Jugador1.Name = "lbl_Jugador1";
+            lbl_Jugador1.Size = new Size(156, 37);
+            lbl_Jugador1.TabIndex = 13;
+            lbl_Jugador1.Text = "Jugador 1";
+            lbl_Jugador1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
-            panel3.BackColor = Color.IndianRed;
+            panel3.BackColor = Color.MediumSlateBlue;
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(label2);
+            panel3.Controls.Add(lbl_Jugador2);
             panel3.Location = new Point(1085, 56);
             panel3.Name = "panel3";
             panel3.Size = new Size(156, 44);
             panel3.TabIndex = 23;
             // 
-            // label2
+            // lbl_Jugador2
             // 
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(2, 3);
-            label2.Name = "label2";
-            label2.Size = new Size(156, 37);
-            label2.TabIndex = 13;
-            label2.Text = "Jugador 2";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_Jugador2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Jugador2.Location = new Point(-1, 3);
+            lbl_Jugador2.Name = "lbl_Jugador2";
+            lbl_Jugador2.Size = new Size(156, 37);
+            lbl_Jugador2.TabIndex = 13;
+            lbl_Jugador2.Text = "Jugador 2";
+            lbl_Jugador2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // rtb_Jugadas
             // 
-            rtb_Jugadas.BackColor = Color.WhiteSmoke;
+            rtb_Jugadas.BackColor = Color.Gainsboro;
             rtb_Jugadas.BorderStyle = BorderStyle.None;
-            rtb_Jugadas.Enabled = false;
             rtb_Jugadas.Location = new Point(888, 333);
             rtb_Jugadas.Name = "rtb_Jugadas";
+            rtb_Jugadas.ReadOnly = true;
             rtb_Jugadas.Size = new Size(353, 141);
             rtb_Jugadas.TabIndex = 24;
             rtb_Jugadas.Text = "";
@@ -413,6 +454,7 @@
             FormClosing += FrmMenuPrincipal_FormClosing;
             Load += FrmMenuPrincipal_Load;
             panelBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgError).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_frenarJuego).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_crearJuego).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_iniciarJuego).EndInit();
@@ -451,10 +493,12 @@
         private DataGridView dgv_JugadasJ1;
         private DataGridView dgv_JugadasJ2;
         private Panel panel2;
-        private Label label1;
+        private Label lbl_Jugador1;
         private Panel panel3;
-        private Label label2;
+        private Label lbl_Jugador2;
         private PictureBox btn_frenarJuego;
         private RichTextBox rtb_Jugadas;
+        private PictureBox imgError;
+        private Label lblError;
     }
 }

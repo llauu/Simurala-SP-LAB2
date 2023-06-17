@@ -22,8 +22,11 @@ namespace Entidades {
         public static bool EscribirArchivoJson(List<T>? lista, string rutaJSON) {
             bool guardado = false;
 
+            JsonSerializerSettings configuracion = new JsonSerializerSettings();
+            configuracion.Formatting = Formatting.Indented;
+
             using (StreamWriter sw = new StreamWriter(rutaJSON)) {
-                string json_str = JsonConvert.SerializeObject(lista);
+                string json_str = JsonConvert.SerializeObject(lista, configuracion);
 
                 sw.WriteLine(json_str);
                 guardado = true;

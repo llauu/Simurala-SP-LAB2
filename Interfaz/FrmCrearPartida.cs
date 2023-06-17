@@ -2,8 +2,18 @@
 
 namespace Interfaz {
     public partial class FrmCrearPartida : Form {
-        public FrmCrearPartida() {
+        private Partida? partidaCreada;
+        private Action DelegadoCambioRegistro;
+        private Action<Dado[]> ActualizarDados;
+
+        public Partida PartidaCreada { get => partidaCreada!; }
+
+        public FrmCrearPartida(Action<Dado[]> ActualizarDados, Action DelegadoCambioRegistro) {
             InitializeComponent();
+
+            this.DelegadoCambioRegistro = DelegadoCambioRegistro;
+            this.ActualizarDados = ActualizarDados;
+            this.partidaCreada = null;
         }
 
         private void FrmCrearSala_Load(object sender, EventArgs e) {
@@ -19,7 +29,9 @@ namespace Interfaz {
 
             if (jugador1Seleccionado is not null && jugador2Seleccionado is not null) {
                 try {
-                    if (Sistema.CrearPartida(jugador1Seleccionado, jugador2Seleccionado)) {
+                    partidaCreada = Sistema.CrearPartida(jugador1Seleccionado, jugador2Seleccionado, ActualizarDados, DelegadoCambioRegistro);
+
+                    if (partidaCreada is not null) {
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

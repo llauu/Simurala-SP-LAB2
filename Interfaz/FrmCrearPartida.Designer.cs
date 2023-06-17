@@ -86,7 +86,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(184, 93);
+            label3.Location = new Point(184, 91);
             label3.Name = "label3";
             label3.Size = new Size(26, 19);
             label3.TabIndex = 27;

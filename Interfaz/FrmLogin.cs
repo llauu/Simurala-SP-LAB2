@@ -56,7 +56,7 @@ namespace Interfaz {
         private void AccederMenuPrincipal(int indiceUsuario) {
             if (Sistema.ListaUsuarios != null) {
                 Usuario usuarioIniciado = Sistema.ListaUsuarios[indiceUsuario];
-                FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal(usuarioIniciado, this);
+                FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal(this);
 
                 this.Hide();
                 menuPrincipal.Show();

@@ -1,1 +1,9 @@
-[{"Id":0,"Nombre":"lautaro","Apellido":"monserrat","Correo":"admin@","Clave":"123admin"}]
+[
+  {
+    "Id": 0,
+    "Nombre": "lautaro",
+    "Apellido": "monserrat",
+    "Correo": "admin@",
+    "Clave": "123admin"
+  }
+]

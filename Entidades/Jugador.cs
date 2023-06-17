@@ -10,16 +10,19 @@ namespace Entidades {
         private string? apellido;
         private string? usuario;
         private bool partidaEnCurso;
-        private int puntaje;
+        private int partidasGanadas;
+        private int puntajeEnTotal;
 
         public string Nombre { get => nombre!; set => nombre = value; }
         public string Apellido { get => apellido!; set => apellido = value; }
         public string Usuario { get => usuario!; set => usuario = value; }
         public bool PartidaEnCurso { get => partidaEnCurso; set => partidaEnCurso = value; }
-        public int Puntaje { get => puntaje; set => puntaje = value; }
+        public int PuntajeEnTotal { get => puntajeEnTotal; set => puntajeEnTotal = value; }
+        public int PartidasGanadas { get => partidasGanadas; set => partidasGanadas = value; }
 
         private Jugador() {
-            this.puntaje = 0;
+            this.partidasGanadas = 0;
+            this.puntajeEnTotal = 0;
             this.partidaEnCurso = false;
         }
 
