@@ -15,8 +15,8 @@ namespace Entidades {
         private static string rutaImagenDadoSeis;
 
 
-        public static List<Usuario> ListaUsuarios { get => listaUsuarios; }
-        public static List<Jugador> ListaJugadores { get => listaJugadores; }
+        public static List<Usuario> ListaUsuarios { get => listaUsuarios!; }
+        public static List<Jugador> ListaJugadores { get => listaJugadores!; }
         public static List<Partida> ListaPartidas { get => listaPartidas; }
         public static string RutaImagenDadoUno { get => rutaImagenDadoUno; }
         public static string RutaImagenDadoDos { get => rutaImagenDadoDos; }
@@ -122,10 +122,33 @@ namespace Entidades {
             return partidaCreada!;
         }
 
+        public static Dictionary<string, int> ObtenerJugadoresConSusVictorias() {
+            Dictionary<string, int> jugadoresConSusVictorias = new Dictionary<string, int>();
 
+            foreach (Jugador jugador in listaJugadores!) {
+                jugadoresConSusVictorias.Add(jugador.ToString(), jugador.PartidasGanadas);
+            }
 
+            return OrdenarJugadores(jugadoresConSusVictorias); 
+        }
 
+        public static Dictionary<string, int> ObtenerJugadoresConSusPuntosEnTotal() {
+            Dictionary<string, int> jugadoresConSusPuntosEnTotal = new Dictionary<string, int>();
 
+            foreach (Jugador jugador in listaJugadores!) {
+                jugadoresConSusPuntosEnTotal.Add(jugador.ToString(), jugador.PuntajeEnTotal);
+            }
+
+            return OrdenarJugadores(jugadoresConSusPuntosEnTotal);
+        }
+
+        private static Dictionary<string, int> OrdenarJugadores(Dictionary<string, int> jugadores) {
+            Dictionary<string, int> jugadoresOrdenados = new Dictionary<string, int>();
+
+            jugadoresOrdenados = jugadores.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
+            return jugadoresOrdenados;
+        }
 
         /// <summary>
         /// Genera un ID numerico entre 100000 y 999999 (incluidos)

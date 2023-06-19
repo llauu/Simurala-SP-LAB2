@@ -5,15 +5,17 @@ namespace Interfaz {
         private Partida? partidaCreada;
         private Action DelegadoCambioRegistro;
         private Action<Dado[]> ActualizarDados;
+        private Action<Partida> NotificadorGanador;
 
         public Partida PartidaCreada { get => partidaCreada!; }
 
-        public FrmCrearPartida(Action<Dado[]> ActualizarDados, Action DelegadoCambioRegistro) {
+        public FrmCrearPartida(Action<Dado[]> ActualizarDados, Action DelegadoCambioRegistro, Action<Partida> NotificadorGanador) {
             InitializeComponent();
 
+            this.partidaCreada = null;
             this.DelegadoCambioRegistro = DelegadoCambioRegistro;
             this.ActualizarDados = ActualizarDados;
-            this.partidaCreada = null;
+            this.NotificadorGanador = NotificadorGanador;
         }
 
         private void FrmCrearSala_Load(object sender, EventArgs e) {
@@ -30,6 +32,7 @@ namespace Interfaz {
             if (jugador1Seleccionado is not null && jugador2Seleccionado is not null) {
                 try {
                     partidaCreada = Sistema.CrearPartida(jugador1Seleccionado, jugador2Seleccionado, ActualizarDados, DelegadoCambioRegistro);
+                    partidaCreada.NotificadorGanador += NotificadorGanador;
 
                     if (partidaCreada is not null) {
                         this.DialogResult = DialogResult.OK;

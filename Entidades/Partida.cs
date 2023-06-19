@@ -6,24 +6,31 @@ using System.Threading.Tasks;
 
 namespace Entidades {
     public class Partida {
+        private CancellationTokenSource cancellationSource;
+        private CancellationToken cancellation;
         private Dictionary<string, int> jugadasJugadorUno;
         private Dictionary<string, int> jugadasJugadorDos;
+        public event Action<Partida>? NotificadorGanador;
         public Action<Dado[]>? DelegadoMostrarDados;
-        public event Action? NotificadorGanador;
         public Action? DelegadoCambioRegistro;
         private string registroDeJuego;
         private bool partidaIniciada;
         private Jugador? jugadorUno;
         private Jugador? jugadorDos;
+        private Jugador? ganador;
         private Dado[] dados;
         private int id;
 
         private Partida() {
+            this.cancellationSource = new CancellationTokenSource();
+            this.cancellation = this.cancellationSource.Token;                                                       
+
             this.jugadasJugadorUno = new Dictionary<string, int>();
             this.jugadasJugadorDos = new Dictionary<string, int>();
             this.partidaIniciada = false;
             this.registroDeJuego = String.Empty;
             this.dados = new Dado[5];
+            this.ganador = null;
 
             this.id = GenerarIdPartida();
 
@@ -46,6 +53,9 @@ namespace Entidades {
         public Dado[] Dados { get => dados; }
         public string RegistroDeJuego { get => registroDeJuego; }
         public bool PartidaIniciada { get => partidaIniciada; }
+        public Jugador? Ganador { get => ganador; }
+        public CancellationTokenSource CancellationSource { get => cancellationSource; }
+        public CancellationToken Cancellation { get => cancellation; }
 
         private void InicializarDados() {
             for (int i = 0; i < dados.Length; i++) {
@@ -100,7 +110,7 @@ namespace Entidades {
         }
 
         public void ComenzarPartida() {
-            int turnosMaximos = 20;
+            int turnosMaximos = 8;
             int turnosJugados = 0;
             int puntajeJugadorUno;
             int puntajeJugadorDos;
@@ -108,33 +118,43 @@ namespace Entidades {
             this.partidaIniciada = true;
 
             while (turnosJugados < turnosMaximos) {
-                registroDeJuego += $"Turno {turnosJugados + 1}:\n";
-                JugarTurno(jugadorUno!);
-                turnosJugados++;
+                if(!cancellation.IsCancellationRequested) {
+                    registroDeJuego += $"Turno {turnosJugados + 1}:\n";
+                    JugarTurno(jugadorUno!);
+                    turnosJugados++;
 
-                registroDeJuego += $"\n------------------------------------------------------------------\n";
-                DelegadoCambioRegistro?.Invoke();
+                    registroDeJuego += $"\n------------------------------------------------------------------\n";
+                    DelegadoCambioRegistro?.Invoke();
 
-                registroDeJuego += $"Turno {turnosJugados + 1}:\n";
-                JugarTurno(jugadorDos!);
-                turnosJugados ++;
+                    registroDeJuego += $"Turno {turnosJugados + 1}:\n";
+                    JugarTurno(jugadorDos!);
+                    turnosJugados++;
 
-                registroDeJuego += $"\n------------------------------------------------------------------\n";
-                DelegadoCambioRegistro?.Invoke();
+                    registroDeJuego += $"\n------------------------------------------------------------------\n";
+                    DelegadoCambioRegistro?.Invoke();
+                }
+                else {
+                    registroDeJuego += $"\nPARTIDA CANCELADA\n";
+                    DelegadoCambioRegistro?.Invoke();
+                    dados[0].UltimoValor = 0;
+                    break;
+                }
             }
             
             puntajeJugadorUno = CalcularPuntaje(jugadasJugadorUno);
             puntajeJugadorDos = CalcularPuntaje(jugadasJugadorDos);
 
-            if(puntajeJugadorUno > puntajeJugadorDos) {
+            if (puntajeJugadorUno > puntajeJugadorDos) {
                 jugadorUno!.PartidasGanadas += 1;
                 registroDeJuego += $"{jugadorUno.Usuario} GANO el juego!\n";
-                NotificadorGanador?.Invoke();
+                this.ganador = jugadorUno;
+                NotificadorGanador?.Invoke(this);
             }
             else if (puntajeJugadorUno < puntajeJugadorDos) {
                 jugadorDos!.PartidasGanadas += 1;
                 registroDeJuego += $"{jugadorDos.Usuario} GANO el juego!\n";
-                NotificadorGanador?.Invoke();
+                this.ganador = jugadorDos;
+                NotificadorGanador?.Invoke(this);
             }
             else {
                 registroDeJuego += $"El juego termino en EMPATE!\n";
@@ -144,9 +164,11 @@ namespace Entidades {
 
             jugadorUno!.PuntajeEnTotal += puntajeJugadorUno;
             jugadorDos!.PuntajeEnTotal += puntajeJugadorDos;
+
+            dados[0].UltimoValor = 0;
         }
 
-        public void TirarDados() {
+        private void TirarDados() {
             foreach(Dado dado in dados) {
                 if (dado.DadoSeleccionado == false) {
                     dado.TirarDado();
@@ -154,7 +176,7 @@ namespace Entidades {
             }
         }
 
-        public void JugarTurno(Jugador jugador) {
+        private void JugarTurno(Jugador jugador) {
             int numeroTirada = 0;
             bool repetirTirada;
             bool esUltimoTiro = false;
@@ -211,7 +233,7 @@ namespace Entidades {
             } while (numeroTirada < 3 && repetirTirada);
         }
 
-        public bool SeleccionarDadosConPosibleJugada(Dado[] dados) {
+        private bool SeleccionarDadosConPosibleJugada(Dado[] dados) {
             bool tieneDadosConPosibleJugada = false;
             int cantidadDadosSeleccionados = 0;
             int vecesRepetido;
@@ -236,7 +258,7 @@ namespace Entidades {
             return tieneDadosConPosibleJugada;
         }
 
-        public void SeleccionarDadosRandom(Dado[] dados) {
+        private void SeleccionarDadosRandom(Dado[] dados) {
             Random rand = new Random(); 
             int cantidadDadosSeleccionados = 0;
             
@@ -253,7 +275,7 @@ namespace Entidades {
             }
         }
 
-        public bool TacharUnaJugada(Dictionary<string, int> jugadasJugador) {
+        private bool TacharUnaJugada(Dictionary<string, int> jugadasJugador) {
             if (jugadasJugador["Generala"] == -1) {
                 jugadasJugador["Generala"] = 0;
                 registroDeJuego += $"No pudo hacer ningun juego y coloco 0 a la generala.\n";
@@ -290,7 +312,7 @@ namespace Entidades {
             return false;
         }
 
-        public bool VerificarSiTieneJugadaImportante(Dado[] dados, Dictionary<string, int> jugadasJugador) {
+        private bool VerificarSiTieneJugadaImportante(Dado[] dados, Dictionary<string, int> jugadasJugador) {
             if (VerificarGenerala(dados) && jugadasJugador["Generala"] == -1) {
                 jugadasJugador["Generala"] = 60;
                 registroDeJuego += $"Hizo generala y anoto 60 puntos.\n";
@@ -317,7 +339,7 @@ namespace Entidades {
             return false;
         }
 
-        public bool VerificarSiTieneJugadaComun(Dado[] dados, Dictionary<string, int> jugadasJugador, bool esUltimoTiro) {
+        private bool VerificarSiTieneJugadaComun(Dado[] dados, Dictionary<string, int> jugadasJugador, bool esUltimoTiro) {
             bool tieneJugadaComun = false;
             int vecesRepetidasMax = 0;
             int numeroJugadaMax = 0;
@@ -349,13 +371,13 @@ namespace Entidades {
             return tieneJugadaComun;
         }
 
-        public void DeseleccionarDados() {
+        private void DeseleccionarDados() {
             foreach(Dado dado in this.dados) {
                 dado.DadoSeleccionado = false;
             }
         }
 
-        public bool VerificarEscalera(Dado[] dados) {
+        private bool VerificarEscalera(Dado[] dados) {
             bool escaleraValida = false;
 
             dados.OrderBy(dado => dado.UltimoValor);
@@ -368,7 +390,7 @@ namespace Entidades {
             return escaleraValida;
         }
 
-        public bool VerificarFull(Dado[] dados) {
+        private bool VerificarFull(Dado[] dados) {
             int cantidadDadosIguales;
             bool fullValido = false;
             bool tieneTresIguales = false;
@@ -400,7 +422,7 @@ namespace Entidades {
             return fullValido;
         }
 
-        public bool VerificarPoker(Dado[] dados) {
+        private bool VerificarPoker(Dado[] dados) {
             bool pokerValido = false;
             int cantidadDadosIguales;
 
@@ -421,7 +443,7 @@ namespace Entidades {
             return pokerValido;
         }
 
-        public bool VerificarGenerala(Dado[] dados) {
+        private bool VerificarGenerala(Dado[] dados) {
             bool generalaValida = true;
 
             for(int i = 1; i < dados.Length; i++) {
@@ -433,7 +455,7 @@ namespace Entidades {
             return generalaValida;
         }
 
-        public int ContarVecesRepetidasUnNumero(Dado[] dados, int numero) {
+        private int ContarVecesRepetidasUnNumero(Dado[] dados, int numero) {
             int contador = 0;   
 
             for(int i = 0; i < dados.Length; i++) {
@@ -444,7 +466,5 @@ namespace Entidades {
 
             return contador;
         }
-
-
     }
 }

@@ -34,12 +34,13 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panelBotones = new Panel();
+            btn_Estadisticas = new PictureBox();
             imgError = new PictureBox();
             btn_frenarJuego = new PictureBox();
             lblError = new Label();
-            btn_crearJuego = new PictureBox();
             btn_iniciarJuego = new PictureBox();
             btn_agregarJugador = new PictureBox();
+            btn_crearJuego = new PictureBox();
             toolTip1 = new ToolTip(components);
             dgv_Partidas = new DataGridView();
             panel1 = new Panel();
@@ -58,11 +59,12 @@
             lbl_Jugador2 = new Label();
             rtb_Jugadas = new RichTextBox();
             panelBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btn_Estadisticas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgError).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_frenarJuego).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btn_crearJuego).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_iniciarJuego).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_agregarJugador).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btn_crearJuego).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Partidas).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -80,10 +82,10 @@
             // panelBotones
             // 
             panelBotones.BackColor = Color.LightGray;
+            panelBotones.Controls.Add(btn_Estadisticas);
             panelBotones.Controls.Add(imgError);
             panelBotones.Controls.Add(btn_frenarJuego);
             panelBotones.Controls.Add(lblError);
-            panelBotones.Controls.Add(btn_crearJuego);
             panelBotones.Controls.Add(btn_iniciarJuego);
             panelBotones.Controls.Add(btn_agregarJugador);
             panelBotones.Dock = DockStyle.Bottom;
@@ -92,10 +94,23 @@
             panelBotones.Size = new Size(1280, 73);
             panelBotones.TabIndex = 0;
             // 
+            // btn_Estadisticas
+            // 
+            btn_Estadisticas.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_Estadisticas.Cursor = Cursors.Hand;
+            btn_Estadisticas.Image = (Image)resources.GetObject("btn_Estadisticas.Image");
+            btn_Estadisticas.Location = new Point(21, 14);
+            btn_Estadisticas.Name = "btn_Estadisticas";
+            btn_Estadisticas.Size = new Size(48, 46);
+            btn_Estadisticas.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_Estadisticas.TabIndex = 27;
+            btn_Estadisticas.TabStop = false;
+            btn_Estadisticas.Click += btn_Estadisticas_Click;
+            // 
             // imgError
             // 
             imgError.Image = (Image)resources.GetObject("imgError.Image");
-            imgError.Location = new Point(113, 11);
+            imgError.Location = new Point(732, 12);
             imgError.Name = "imgError";
             imgError.Size = new Size(22, 22);
             imgError.SizeMode = PictureBoxSizeMode.Zoom;
@@ -120,25 +135,12 @@
             // 
             lblError.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblError.ForeColor = Color.IndianRed;
-            lblError.Location = new Point(141, 11);
+            lblError.Location = new Point(760, 12);
             lblError.Name = "lblError";
             lblError.Size = new Size(342, 52);
             lblError.TabIndex = 26;
             lblError.Text = "(error)";
             lblError.Visible = false;
-            // 
-            // btn_crearJuego
-            // 
-            btn_crearJuego.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btn_crearJuego.Cursor = Cursors.Hand;
-            btn_crearJuego.Image = (Image)resources.GetObject("btn_crearJuego.Image");
-            btn_crearJuego.Location = new Point(1061, 11);
-            btn_crearJuego.Name = "btn_crearJuego";
-            btn_crearJuego.Size = new Size(72, 50);
-            btn_crearJuego.SizeMode = PictureBoxSizeMode.Zoom;
-            btn_crearJuego.TabIndex = 4;
-            btn_crearJuego.TabStop = false;
-            btn_crearJuego.Click += btn_crearJuego_Click;
             // 
             // btn_iniciarJuego
             // 
@@ -158,13 +160,26 @@
             btn_agregarJugador.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btn_agregarJugador.Cursor = Cursors.Hand;
             btn_agregarJugador.Image = (Image)resources.GetObject("btn_agregarJugador.Image");
-            btn_agregarJugador.Location = new Point(15, 11);
+            btn_agregarJugador.Location = new Point(85, 14);
             btn_agregarJugador.Name = "btn_agregarJugador";
-            btn_agregarJugador.Size = new Size(57, 50);
+            btn_agregarJugador.Size = new Size(54, 50);
             btn_agregarJugador.SizeMode = PictureBoxSizeMode.Zoom;
             btn_agregarJugador.TabIndex = 2;
             btn_agregarJugador.TabStop = false;
             btn_agregarJugador.Click += btn_agregarJugador_Click;
+            // 
+            // btn_crearJuego
+            // 
+            btn_crearJuego.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_crearJuego.Cursor = Cursors.Hand;
+            btn_crearJuego.Image = (Image)resources.GetObject("btn_crearJuego.Image");
+            btn_crearJuego.Location = new Point(219, 3);
+            btn_crearJuego.Name = "btn_crearJuego";
+            btn_crearJuego.Size = new Size(27, 37);
+            btn_crearJuego.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_crearJuego.TabIndex = 4;
+            btn_crearJuego.TabStop = false;
+            btn_crearJuego.Click += btn_crearJuego_Click;
             // 
             // dgv_Partidas
             // 
@@ -212,6 +227,7 @@
             panel1.BackColor = Color.LightGray;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label4);
+            panel1.Controls.Add(btn_crearJuego);
             panel1.Location = new Point(38, 56);
             panel1.Name = "panel1";
             panel1.Size = new Size(256, 44);
@@ -222,7 +238,7 @@
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(-1, 3);
             label4.Name = "label4";
-            label4.Size = new Size(256, 37);
+            label4.Size = new Size(197, 37);
             label4.TabIndex = 13;
             label4.Text = "Salas de juego";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -454,11 +470,12 @@
             FormClosing += FrmMenuPrincipal_FormClosing;
             Load += FrmMenuPrincipal_Load;
             panelBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)btn_Estadisticas).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgError).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_frenarJuego).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btn_crearJuego).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_iniciarJuego).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_agregarJugador).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btn_crearJuego).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Partidas).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -500,5 +517,6 @@
         private RichTextBox rtb_Jugadas;
         private PictureBox imgError;
         private Label lblError;
+        private PictureBox btn_Estadisticas;
     }
 }

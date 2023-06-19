@@ -12,8 +12,6 @@ using System.Windows.Forms;
 
 namespace Interfaz {
     public partial class FrmMenuPrincipal : Form {
-        private CancellationTokenSource cancellationSource;
-        private CancellationToken cancellation;
         private List<Partida> partidasActivas;
         private PictureBox[] imagenesDados;
         private Task? inicioPartida;
@@ -28,15 +26,14 @@ namespace Interfaz {
 
             this.partidasActivas = new List<Partida>();
 
-            // BORRAR
+            // BORRAR --------------------------------------------------------
             partida = new Partida(new Jugador("pepe", "gomez", "pepe777"), new Jugador("maria", "parla", "xXmariaXx"), ActualizarDados, SeleccionarPartida);
             partidaDos = new Partida(new Jugador("juan", "gomaaez", "juani76"), new Jugador("maria", "parla", "kikiGamer"), ActualizarDados, SeleccionarPartida);
-
-            partidasActivas.Add(partida); // BORRAR
+            partida.NotificadorGanador += InformarGanador;
+            partidaDos.NotificadorGanador += InformarGanador;
+            partidasActivas.Add(partida);
             partidasActivas.Add(partidaDos);
-
-            this.cancellationSource = new CancellationTokenSource();
-            this.cancellation = this.cancellationSource.Token;
+            // ---------------------------------------------------------------
 
             this.imagenesDados = new PictureBox[] {
                 this.dado_uno,
@@ -56,6 +53,7 @@ namespace Interfaz {
             this.toolTip1.SetToolTip(this.btn_crearJuego, "Crear nueva partida");
             this.toolTip1.SetToolTip(this.btn_frenarJuego, "Frenar juego");
             this.toolTip1.SetToolTip(this.btn_iniciarJuego, "Iniciar juego");
+            this.toolTip1.SetToolTip(this.btn_Estadisticas, "Estadisticas historicas");
 
             ActualizarListaPartidas();
         }
@@ -70,7 +68,6 @@ namespace Interfaz {
 
         private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e) {
             if (this.formLogin != null) {
-                this.cancellationSource.Cancel();
                 this.formLogin.Close();
             }
         }
@@ -82,10 +79,6 @@ namespace Interfaz {
                 this.Invoke(ActualizarDados, parametros);
             }
             else {
-                if (this.cancellation.IsCancellationRequested) {
-                    return;
-                }
-
                 if (dados[0].UltimoValor == 0) {
                     dado_uno.Visible = false;
                     dado_dos.Visible = false;
@@ -98,7 +91,6 @@ namespace Interfaz {
                         ActualizarImagenDado(dados[i].UltimoValor, imagenesDados[i]);
                     }
                 }
-
             }
         }
 
@@ -128,23 +120,34 @@ namespace Interfaz {
         }
 
         private void btn_iniciarJuego_Click(object sender, EventArgs e) {
-            Partida partida = (Partida)dgv_Partidas.CurrentRow.DataBoundItem;
+            this.imgError.Visible = false;
+            this.lblError.Visible = false;
 
-            if (!partida.PartidaIniciada) {
-                inicioPartida = new Task(partida.ComenzarPartida);
-                inicioPartida.Start();
+            if (partidasActivas.Count > 0) {
+                Partida partida = (Partida)dgv_Partidas.CurrentRow.DataBoundItem;
+
+                if (!partida.PartidaIniciada) {
+                    inicioPartida = new Task(partida.ComenzarPartida);
+                    inicioPartida.Start();
+                }
+                else {
+                    FrmLogin.ActualizarMensajeDeError(imgError, lblError, "Esta partida ya ha sido iniciada.");
+                }
             }
             else {
-                FrmLogin.ActualizarMensajeDeError(imgError, lblError, "Esta partida ya ha sido iniciada.");
+                FrmLogin.ActualizarMensajeDeError(imgError, lblError, "No hay partidas creadas para iniciar.");
             }
         }
 
         private void SeleccionarPartida() {
-            ActualizarDatosPartida((Partida)dgv_Partidas.CurrentRow.DataBoundItem);
+            if (partidasActivas.Count > 0) {
+                Partida partidaSeleccionada = (Partida)dgv_Partidas.CurrentRow.DataBoundItem;
+                ActualizarDatosPartida(partidaSeleccionada);
+            }
         }
 
         private void btn_crearJuego_Click(object sender, EventArgs e) {
-            FrmCrearPartida frmCrearSala = new FrmCrearPartida(ActualizarDados, SeleccionarPartida);
+            FrmCrearPartida frmCrearSala = new FrmCrearPartida(ActualizarDados, SeleccionarPartida, InformarGanador);
 
             if (frmCrearSala.ShowDialog() == DialogResult.OK) {
                 MessageBox.Show("Partida creada con exito!", "Partida creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,56 +158,58 @@ namespace Interfaz {
         }
 
         private void ActualizarListaPartidas() {
-            dgv_Partidas.DataSource = null;
-            dgv_Partidas.DataSource = partidasActivas;
+            if (partidasActivas.Count > 0) {
+                dgv_Partidas.DataSource = null;
+                dgv_Partidas.DataSource = partidasActivas;
 
-            dgv_Partidas.Columns["Id"].HeaderText = "ID";
-            dgv_Partidas.Columns["JugadorUno"].HeaderText = "Jugador 1";
-            dgv_Partidas.Columns["JugadorDos"].HeaderText = "Jugador 2";
-            dgv_Partidas.Columns["JugadasJugadorUno"].Visible = false;
-            dgv_Partidas.Columns["JugadasJugadorDos"].Visible = false;
-            dgv_Partidas.Columns["PartidaIniciada"].Visible = false;
-            dgv_Partidas.Columns["RegistroDeJuego"].Visible = false;
+                dgv_Partidas.Columns["Id"].HeaderText = "ID";
+                dgv_Partidas.Columns["JugadorUno"].HeaderText = "Jugador 1";
+                dgv_Partidas.Columns["JugadorDos"].HeaderText = "Jugador 2";
+                dgv_Partidas.Columns["JugadasJugadorUno"].Visible = false;
+                dgv_Partidas.Columns["JugadasJugadorDos"].Visible = false;
+                dgv_Partidas.Columns["PartidaIniciada"].Visible = false;
+                dgv_Partidas.Columns["RegistroDeJuego"].Visible = false;
+                dgv_Partidas.Columns["CancellationSource"].Visible = false;
+                dgv_Partidas.Columns["Cancellation"].Visible = false;
 
-            dgv_Partidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_Partidas.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv_Partidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_Partidas.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void ActualizarDatosPartida(Partida partidaSeleccionada) {
-            BindingSource fuenteJugadorUno = new BindingSource();
-            BindingSource fuenteJugadorDos = new BindingSource();
+            if (partidaSeleccionada != null) {
+                BindingSource fuenteJugadorUno = new BindingSource();
+                BindingSource fuenteJugadorDos = new BindingSource();
 
-            if (this.InvokeRequired) {
-                object[] parametros = { partidaSeleccionada };
-                this.Invoke(ActualizarDatosPartida, parametros);
-            }
-            else {
-                if (this.cancellation.IsCancellationRequested) {
-                    return;
+                if (this.InvokeRequired) {
+                    object[] parametros = { partidaSeleccionada };
+                    this.Invoke(ActualizarDatosPartida, parametros);
                 }
+                else {
+                    ActualizarDados(partidaSeleccionada.Dados);
 
-                ActualizarDados(partidaSeleccionada.Dados);
+                    fuenteJugadorUno.DataSource = new BindingSource(partidaSeleccionada.JugadasJugadorUno, null);
+                    fuenteJugadorDos.DataSource = new BindingSource(partidaSeleccionada.JugadasJugadorDos, null);
 
-                fuenteJugadorUno.DataSource = new BindingSource(partidaSeleccionada.JugadasJugadorUno, null);
-                fuenteJugadorDos.DataSource = new BindingSource(partidaSeleccionada.JugadasJugadorDos, null);
+                    dgv_JugadasJ1.DataSource = fuenteJugadorUno;
+                    dgv_JugadasJ2.DataSource = fuenteJugadorDos;
 
-                dgv_JugadasJ1.DataSource = fuenteJugadorUno;
-                dgv_JugadasJ2.DataSource = fuenteJugadorDos;
+                    dgv_JugadasJ1.CurrentCell = null;
+                    dgv_JugadasJ2.CurrentCell = null;
 
-                dgv_JugadasJ1.CurrentCell = null;
-                dgv_JugadasJ2.CurrentCell = null;
+                    this.rtb_Jugadas.Text = partidaSeleccionada.RegistroDeJuego;
+                    this.rtb_Jugadas.SelectionStart = this.rtb_Jugadas.Text.Length;
+                    this.rtb_Jugadas.ScrollToCaret();
 
-                this.rtb_Jugadas.Text = partidaSeleccionada.RegistroDeJuego;
-                this.rtb_Jugadas.SelectionStart = this.rtb_Jugadas.Text.Length;
-                this.rtb_Jugadas.ScrollToCaret();
+                    this.lbl_Jugador1.Text = partidaSeleccionada.JugadorUno?.Usuario;
+                    this.lbl_Jugador2.Text = partidaSeleccionada.JugadorDos?.Usuario;
 
-                this.lbl_Jugador1.Text = partidaSeleccionada.JugadorUno?.Usuario;
-                this.lbl_Jugador2.Text = partidaSeleccionada.JugadorDos?.Usuario;
-
-                dgv_JugadasJ1.Columns["Key"].HeaderText = "Jugada";
-                dgv_JugadasJ1.Columns["Value"].HeaderText = "Puntaje";
-                dgv_JugadasJ2.Columns["Key"].HeaderText = "Jugada";
-                dgv_JugadasJ2.Columns["Value"].HeaderText = "Puntaje";
+                    dgv_JugadasJ1.Columns["Key"].HeaderText = "Jugada";
+                    dgv_JugadasJ1.Columns["Value"].HeaderText = "Puntaje";
+                    dgv_JugadasJ2.Columns["Key"].HeaderText = "Jugada";
+                    dgv_JugadasJ2.Columns["Value"].HeaderText = "Puntaje";
+                }
             }
         }
 
@@ -239,11 +244,33 @@ namespace Interfaz {
         }
 
         private void btn_frenarJuego_Click(object sender, EventArgs e) {
-            this.cancellationSource.Cancel();
+            if (partidasActivas.Count > 0) {
+                Partida partida = (Partida)dgv_Partidas.CurrentRow.DataBoundItem;
+
+                if (partida.PartidaIniciada) {
+                    partida.CancellationSource.Cancel();
+                }
+                else {
+                    FrmLogin.ActualizarMensajeDeError(imgError, lblError, "La partida aun no fue iniciada.");
+                }
+            }
+            else {
+                FrmLogin.ActualizarMensajeDeError(imgError, lblError, "No hay partidas creadas para frenar.");
+            }
         }
 
         private void dgv_Partidas_CellClick(object sender, DataGridViewCellEventArgs e) {
             SeleccionarPartida();
+        }
+
+        private void InformarGanador(Partida partidaFinalizada) {
+            FrmNotificacionGanador frmNotificacionGanador = new FrmNotificacionGanador(partidaFinalizada);
+            frmNotificacionGanador.ShowDialog();
+        }
+
+        private void btn_Estadisticas_Click(object sender, EventArgs e) {
+            FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+            frmEstadisticas.ShowDialog();
         }
     }
 }

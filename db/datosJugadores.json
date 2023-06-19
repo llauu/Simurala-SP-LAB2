@@ -4,7 +4,7 @@
     "Apellido": "monserrat",
     "Usuario": "llauu",
     "PartidaEnCurso": true,
-    "PuntajeEnTotal": 0,
+    "PuntajeEnTotal": 116,
     "PartidasGanadas": 0
   },
   {
@@ -12,14 +12,14 @@
     "Apellido": "gomez",
     "Usuario": "marito12",
     "PartidaEnCurso": true,
-    "PuntajeEnTotal": 79,
-    "PartidasGanadas": 0
+    "PuntajeEnTotal": 90,
+    "PartidasGanadas": 1
   },
   {
     "Nombre": "felipe",
     "Apellido": "jaguer",
     "Usuario": "xXFeliXx",
-    "PartidaEnCurso": true,
+    "PartidaEnCurso": false,
     "PuntajeEnTotal": 0,
     "PartidasGanadas": 0
   },
@@ -27,15 +27,15 @@
     "Nombre": "martin",
     "Apellido": "dicena",
     "Usuario": "ELMarto",
-    "PartidaEnCurso": true,
-    "PuntajeEnTotal": 0,
-    "PartidasGanadas": 0
+    "PartidaEnCurso": false,
+    "PuntajeEnTotal": 113,
+    "PartidasGanadas": 1
   },
   {
     "Nombre": "dad",
     "Apellido": "dwdw",
     "Usuario": "8777",
-    "PartidaEnCurso": true,
+    "PartidaEnCurso": false,
     "PuntajeEnTotal": 94,
     "PartidasGanadas": 1
   },
@@ -43,7 +43,7 @@
     "Nombre": "dwdwq",
     "Apellido": "tt",
     "Usuario": "777777",
-    "PartidaEnCurso": true,
+    "PartidaEnCurso": false,
     "PuntajeEnTotal": 0,
     "PartidasGanadas": 0
   }

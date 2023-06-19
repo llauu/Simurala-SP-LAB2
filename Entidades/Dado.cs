@@ -15,7 +15,7 @@ namespace Entidades {
         }
 
         public bool DadoSeleccionado { get => dadoSeleccionado; set => dadoSeleccionado = value; }
-        public int UltimoValor { get => ultimoValor; }
+        public int UltimoValor { get => ultimoValor; set => ultimoValor = value; }
 
         /// <summary>
         /// Genera un numero aleatorio entre 1 y 6
