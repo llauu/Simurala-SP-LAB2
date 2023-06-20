@@ -17,23 +17,10 @@ namespace Interfaz {
         private Task? inicioPartida;
         private FrmLogin? formLogin;
 
-        // BORRAR
-        //Partida partida;
-        //Partida partidaDos;
-
         public FrmMenuPrincipal() {
             InitializeComponent();
 
             this.partidasActivas = new List<Partida>();
-
-            // BORRAR --------------------------------------------------------
-            //partida = new Partida(new Jugador("pepe", "gomez", "pepe777"), new Jugador("maria", "parla", "xXmariaXx"), ActualizarDados, SeleccionarPartida);
-            //partidaDos = new Partida(new Jugador("juan", "gomaaez", "juani76"), new Jugador("maria", "parla", "kikiGamer"), ActualizarDados, SeleccionarPartida);
-            //partida.NotificadorGanador += InformarGanador;
-            //partidaDos.NotificadorGanador += InformarGanador;
-            //partidasActivas.Add(partida);
-            //partidasActivas.Add(partidaDos);
-            // ---------------------------------------------------------------
 
             this.imagenesDados = new PictureBox[] {
                 this.dado_uno,
@@ -178,7 +165,7 @@ namespace Interfaz {
         }
 
         private void ActualizarDatosPartida(Partida partidaSeleccionada) {
-            if (partidaSeleccionada != null) {
+            if (partidaSeleccionada is not null) {
                 BindingSource fuenteJugadorUno = new BindingSource();
                 BindingSource fuenteJugadorDos = new BindingSource();
 
@@ -264,8 +251,23 @@ namespace Interfaz {
         }
 
         private void InformarGanador(Partida partidaFinalizada) {
-            FrmNotificacionGanador frmNotificacionGanador = new FrmNotificacionGanador(partidaFinalizada);
-            frmNotificacionGanador.ShowDialog();
+            if (partidaFinalizada.UsuarioGanador != "Empate") {
+                FrmNotificacionGanador frmNotificacionGanador = new FrmNotificacionGanador(partidaFinalizada);
+                frmNotificacionGanador.ShowDialog();
+            }
+            else {
+                MessageBox.Show($"La partida N°{partidaFinalizada.Id} termino en empate! \nNo hubo ningun ganador.", $"Partida N° {partidaFinalizada.Id}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            try {
+                BasesDeDatos db = new BasesDeDatos();
+
+                db.ModificarJugador(partidaFinalizada.JugadorUno!);
+                db.ModificarJugador(partidaFinalizada.JugadorDos!);
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Error inesperado al modificar los jugadores de la partida N°{partidaFinalizada.Id} \nError: {ex.Message}", $"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_Estadisticas_Click(object sender, EventArgs e) {

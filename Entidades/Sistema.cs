@@ -13,10 +13,9 @@ namespace Entidades {
         private static string rutaImagenDadoCinco;
         private static string rutaImagenDadoSeis;
 
-
         public static List<Usuario> ListaUsuarios { get => listaUsuarios; }
         public static List<Jugador> ListaJugadores { get => listaJugadores; }
-        public static List<Partida> ListaPartidas { get => listaPartidas; }
+        public static List<Partida> ListaPartidas { get => listaPartidas!; }
         public static string RutaImagenDadoUno { get => rutaImagenDadoUno; }
         public static string RutaImagenDadoDos { get => rutaImagenDadoDos; }
         public static string RutaImagenDadoTres { get => rutaImagenDadoTres; }

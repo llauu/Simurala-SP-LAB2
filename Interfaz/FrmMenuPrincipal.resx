@@ -121,7 +121,7 @@
   <data name="btn_Estadisticas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACv8SURBVHhe7d0J
+        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACv8SURBVHhe7d0J
         tGVleebxolCkUBwZJMa5HWIS7ehK0tFCo+JIR0EQTaJtElfHdoQOilMG4hBREHFaiR01hlbBOASHJM4z
         wcQZ26EVUAZpQJkUFFBJP29BWZeq5957zt7fOd+33+//X+u3Fl6r7t332+8959Y5e9hARJPohvIEead8
         Sy6X/yjgMvmGvFUOkV2EiIiIGuiJcq64J/DSTpNHCREREVXqBvImcU/Ui3a0bBQiIiJaYjvJm8U9OS/L
@@ -1233,7 +1233,7 @@
   <data name="btn_agregarJugador.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA5gAAAOYCAYAAACwyFy9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAA/7JJREFUeF7s/T1yHXvDXv29M/EgPATnb6h5uEqJnTtRpsQlT8ChAmVSlabgGVil
+        DQAACw0B7QfALAAA/7JJREFUeF7s/T1yHXvDXv29M/EgPATnb6h5uEqJnTtRpsQlT8ChAmVSlabgGVil
         SIlzp3Y1tfAI2M8Cee11GiBA/q+qVee+z2n8AG4C3b2JD/5v/2T/43/8j/9DDSLNvDWINPPWINLMW4NI
         M28NIs28NYg089Yg0sxbg0gzbw0izbw1iDTz1iDSzFuDSDNvDSLNvDWINPPWINLMW4NIM28NIs28NYg0
         89Yg0sxbg0gzbw0izbw1iDTz1iDSzFuDSDNvDSLNvDWINPPWINLMW4NIM28NIs28NYi0u73zAD4RRJp5

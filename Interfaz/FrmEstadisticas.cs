@@ -64,7 +64,7 @@ namespace Interfaz {
             if (dgv_HistorialPartidas.Rows.Count > 0) {
                 Partida partidaSeleccionada = (Partida)dgv_HistorialPartidas.CurrentRow.DataBoundItem;
 
-                if (partidaSeleccionada != null) {
+                if (partidaSeleccionada is not null) {
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
 
                     saveFileDialog.DefaultExt = ".log";

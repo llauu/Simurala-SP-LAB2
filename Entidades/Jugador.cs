@@ -55,6 +55,15 @@ namespace Entidades {
             return !(jugador1 == jugador2);
         }
 
+        public override bool Equals(object? obj) {
+            Jugador? jugador = obj as Jugador;
+            return jugador is not null && this == jugador;
+        }
+
+        public override int GetHashCode() {
+            return this.usuario!.GetHashCode();
+        }
+
         public override string ToString() {
             return $"{this.usuario}";
         }

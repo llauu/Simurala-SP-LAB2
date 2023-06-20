@@ -63,6 +63,15 @@ namespace Entidades {
         public static bool operator !=(Usuario usuario1, Usuario usuario2) {
             return !(usuario1 == usuario2);
         }
+        
+        public override bool Equals(object? obj) {
+            Usuario? usuario = obj as Usuario;
+            return usuario is not null && this == usuario;
+        }
+
+        public override int GetHashCode() {
+            return this.id;
+        }
 
         public override string ToString() {
             return $"{this.nombre} {this.apellido}";

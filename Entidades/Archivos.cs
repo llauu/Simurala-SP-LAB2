@@ -39,7 +39,7 @@ namespace Entidades {
         public static bool DescargarRegristroPartida(Partida partida, string ruta) {
             bool descargado = false;
 
-            if(partida != null) {
+            if(partida is not null) {
                 string registro = partida.RegistroDeJuego;
 
                 using (StreamWriter file = new StreamWriter(ruta, false, Encoding.UTF8)) {

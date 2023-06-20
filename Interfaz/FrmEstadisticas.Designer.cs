@@ -179,7 +179,7 @@
             lbl_Jugador1.Name = "lbl_Jugador1";
             lbl_Jugador1.Size = new Size(170, 30);
             lbl_Jugador1.TabIndex = 13;
-            lbl_Jugador1.Text = "Victorias";
+            lbl_Jugador1.Text = "Victorias totales";
             lbl_Jugador1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -199,7 +199,7 @@
             label1.Name = "label1";
             label1.Size = new Size(170, 30);
             label1.TabIndex = 13;
-            label1.Text = "Puntajes";
+            label1.Text = "Puntajes totales";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel3

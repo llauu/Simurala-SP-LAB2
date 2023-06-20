@@ -342,7 +342,7 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgv_JugadasJ1.DefaultCellStyle = dataGridViewCellStyle6;
             dgv_JugadasJ1.EnableHeadersVisualStyles = false;
-            dgv_JugadasJ1.Location = new Point(888, 100);
+            dgv_JugadasJ1.Location = new Point(888, 86);
             dgv_JugadasJ1.MultiSelect = false;
             dgv_JugadasJ1.Name = "dgv_JugadasJ1";
             dgv_JugadasJ1.ReadOnly = true;
@@ -379,7 +379,7 @@
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
             dgv_JugadasJ2.DefaultCellStyle = dataGridViewCellStyle8;
             dgv_JugadasJ2.EnableHeadersVisualStyles = false;
-            dgv_JugadasJ2.Location = new Point(1085, 100);
+            dgv_JugadasJ2.Location = new Point(1085, 86);
             dgv_JugadasJ2.MultiSelect = false;
             dgv_JugadasJ2.Name = "dgv_JugadasJ2";
             dgv_JugadasJ2.ReadOnly = true;
@@ -394,7 +394,7 @@
             panel2.BackColor = Color.DarkSalmon;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(lbl_Jugador1);
-            panel2.Location = new Point(888, 56);
+            panel2.Location = new Point(888, 42);
             panel2.Name = "panel2";
             panel2.Size = new Size(156, 44);
             panel2.TabIndex = 22;
@@ -414,7 +414,7 @@
             panel3.BackColor = Color.MediumSlateBlue;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(lbl_Jugador2);
-            panel3.Location = new Point(1085, 56);
+            panel3.Location = new Point(1085, 42);
             panel3.Name = "panel3";
             panel3.Size = new Size(156, 44);
             panel3.TabIndex = 23;
@@ -433,7 +433,7 @@
             // 
             rtb_Jugadas.BackColor = Color.Gainsboro;
             rtb_Jugadas.BorderStyle = BorderStyle.None;
-            rtb_Jugadas.Location = new Point(888, 333);
+            rtb_Jugadas.Location = new Point(888, 319);
             rtb_Jugadas.Name = "rtb_Jugadas";
             rtb_Jugadas.ReadOnly = true;
             rtb_Jugadas.Size = new Size(353, 141);

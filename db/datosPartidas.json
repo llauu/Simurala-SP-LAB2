@@ -1,77 +1,77 @@
 [
   {
     "$id": "1",
-    "Id": 130384,
+    "Id": 656506,
     "JugadasJugadorUno": {
       "$id": "2",
       "1": 2,
       "2": -1,
       "3": 9,
-      "4": 8,
-      "5": 5,
+      "4": -1,
+      "5": 15,
       "6": -1,
       "Escalera": -1,
       "Full": -1,
-      "Poker": -1,
+      "Poker": 40,
       "Generala": -1
     },
     "JugadasJugadorDos": {
       "$id": "3",
       "1": -1,
-      "2": 4,
+      "2": 8,
       "3": 9,
       "4": 8,
       "5": -1,
-      "6": 18,
+      "6": -1,
       "Escalera": -1,
       "Full": -1,
-      "Poker": -1,
+      "Poker": 40,
       "Generala": -1
     },
     "JugadorUno": {
       "$id": "4",
-      "Usuario": "ElMarto",
-      "Nombre": "Martin",
-      "Apellido": "Kenia",
+      "Usuario": "llauu",
+      "Nombre": "Lautaro",
+      "Apellido": "Monserrat",
       "PartidaEnCurso": false,
-      "PuntajeEnTotal": 18,
-      "PartidasGanadas": 0
+      "PuntajeEnTotal": 60,
+      "PartidasGanadas": 1
     },
     "JugadorDos": {
       "$id": "5",
-      "Usuario": "KikiGamer",
-      "Nombre": "Kiki",
-      "Apellido": "Jema",
+      "Usuario": "LazoMArto",
+      "Nombre": "Lazo",
+      "Apellido": "Martinez",
       "PartidaEnCurso": false,
-      "PuntajeEnTotal": 33,
-      "PartidasGanadas": 1
+      "PuntajeEnTotal": 59,
+      "PartidasGanadas": 0
     },
-    "RegistroDeJuego": "Turno 1:\n\nElMarto tiro los dados y saco: 5, 1, 1, 4 y 2\nSe guardo 2 dados con el valor 1.\n\nElMarto tiro los dados y saco: 3, 1, 1, 4 y 5\nSe guardo 2 dados con el valor 1.\n\nElMarto tiro los dados y saco: 3, 1, 1, 5 y 4\nAnoto 2 puntos al 1.\n\n------------------------------------------------------------------\nTurno 2:\n\nKikiGamer tiro los dados y saco: 4, 5, 3, 5 y 2\nSe guardo 2 dados con el valor 5.\n\nKikiGamer tiro los dados y saco: 2, 5, 4, 5 y 3\nSe guardo 2 dados con el valor 5.\n\nKikiGamer tiro los dados y saco: 4, 5, 3, 5 y 4\nAnoto 8 puntos al 4.\n\n------------------------------------------------------------------\nTurno 3:\n\nElMarto tiro los dados y saco: 3, 6, 3, 2 y 5\nSe guardo 2 dados con el valor 3.\n\nElMarto tiro los dados y saco: 3, 3, 3, 2 y 2\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 4:\n\nKikiGamer tiro los dados y saco: 5, 3, 3, 3 y 6\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 5:\n\nElMarto tiro los dados y saco: 4, 2, 4, 6 y 5\nSe guardo 2 dados con el valor 4.\n\nElMarto tiro los dados y saco: 4, 6, 4, 2 y 6\nSe guardo 2 dados con el valor 4.\n\nElMarto tiro los dados y saco: 4, 3, 4, 6 y 1\nAnoto 8 puntos al 4.\n\n------------------------------------------------------------------\nTurno 6:\n\nKikiGamer tiro los dados y saco: 6, 2, 3, 2 y 1\nSe guardo 2 dados con el valor 2.\n\nKikiGamer tiro los dados y saco: 1, 2, 4, 2 y 5\nSe guardo 2 dados con el valor 2.\n\nKikiGamer tiro los dados y saco: 4, 2, 4, 2 y 6\nAnoto 4 puntos al 2.\n\n------------------------------------------------------------------\nTurno 7:\n\nElMarto tiro los dados y saco: 4, 4, 2, 1 y 3\nSe guardo 2 dados con el valor 4.\n\nElMarto tiro los dados y saco: 4, 4, 6, 2 y 5\nSe guardo 2 dados con el valor 4.\n\nElMarto tiro los dados y saco: 4, 4, 5, 4 y 3\nAnoto 5 puntos al 5.\n\n------------------------------------------------------------------\nTurno 8:\n\nKikiGamer tiro los dados y saco: 6, 6, 4, 5 y 2\nSe guardo 2 dados con el valor 6.\n\nKikiGamer tiro los dados y saco: 6, 6, 6, 1 y 3\nAnoto 18 puntos al 6.\n\n------------------------------------------------------------------\nKikiGamer GANO el juego!\n",
-    "UsuarioGanador": "KikiGamer"
+    "RegistroDeJuego": "Turno 1:\n\nllauu tiro los dados y saco: 4, 3, 2, 6 y 5\nSe guardo el dado con el valor 3.\nSe guardo el dado con el valor 2.\n\nllauu tiro los dados y saco: 1, 3, 2, 1 y 6\nSe guardo 2 dados con el valor 1.\n\nllauu tiro los dados y saco: 1, 3, 2, 1 y 2\nAnoto 2 puntos al 1.\n\n------------------------------------------------------------------\nTurno 2:\n\nLazoMArto tiro los dados y saco: 3, 1, 2, 5 y 3\nSe guardo 2 dados con el valor 3.\n\nLazoMArto tiro los dados y saco: 3, 6, 1, 3 y 3\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 3:\n\nllauu tiro los dados y saco: 4, 1, 3, 1 y 1\nSe guardo 3 dados con el valor 1.\n\nllauu tiro los dados y saco: 4, 1, 5, 1 y 1\nSe guardo 3 dados con el valor 1.\n\nllauu tiro los dados y saco: 2, 1, 1, 1 y 1\nHizo poker y anoto 40 puntos.\n\n------------------------------------------------------------------\nTurno 4:\n\nLazoMArto tiro los dados y saco: 2, 2, 1, 5 y 1\nSe guardo 2 dados con el valor 2.\n\nLazoMArto tiro los dados y saco: 2, 2, 5, 1 y 1\nSe guardo 2 dados con el valor 2.\n\nLazoMArto tiro los dados y saco: 2, 2, 3, 2 y 2\nHizo poker y anoto 40 puntos.\n\n------------------------------------------------------------------\nTurno 5:\n\nllauu tiro los dados y saco: 3, 6, 2, 3 y 6\nSe guardo 2 dados con el valor 3.\n\nllauu tiro los dados y saco: 3, 2, 2, 3 y 4\nSe guardo 2 dados con el valor 3.\n\nllauu tiro los dados y saco: 3, 5, 3, 3 y 6\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 6:\n\nLazoMArto tiro los dados y saco: 6, 2, 4, 1 y 2\nSe guardo 2 dados con el valor 2.\n\nLazoMArto tiro los dados y saco: 2, 2, 2, 3 y 2\nAnoto 8 puntos al 2.\n\n------------------------------------------------------------------\nTurno 7:\n\nllauu tiro los dados y saco: 4, 5, 5, 3 y 1\nSe guardo 2 dados con el valor 5.\n\nllauu tiro los dados y saco: 5, 5, 5, 4 y 1\nAnoto 15 puntos al 5.\n\n------------------------------------------------------------------\nTurno 8:\n\nLazoMArto tiro los dados y saco: 3, 4, 6, 1 y 4\nSe guardo 2 dados con el valor 4.\n\nLazoMArto tiro los dados y saco: 2, 4, 2, 3 y 4\nSe guardo 2 dados con el valor 2.\n\nLazoMArto tiro los dados y saco: 2, 4, 2, 6 y 4\nAnoto 8 puntos al 4.\n\n------------------------------------------------------------------\nllauu GANO el juego!\n",
+    "UsuarioGanador": "llauu"
   },
   {
     "$id": "6",
-    "Id": 887018,
+    "Id": 328612,
     "JugadasJugadorUno": {
       "$id": "7",
-      "1": 2,
+      "1": 3,
       "2": -1,
-      "3": -1,
-      "4": 8,
+      "3": 9,
+      "4": 12,
       "5": -1,
-      "6": 18,
+      "6": -1,
       "Escalera": -1,
       "Full": -1,
-      "Poker": -1,
+      "Poker": 40,
       "Generala": -1
     },
     "JugadasJugadorDos": {
       "$id": "8",
-      "1": -1,
-      "2": 6,
-      "3": 3,
+      "1": 3,
+      "2": -1,
+      "3": 9,
       "4": -1,
-      "5": -1,
+      "5": 15,
       "6": 18,
       "Escalera": -1,
       "Full": -1,
@@ -84,19 +84,169 @@
       "Nombre": "Martin",
       "Apellido": "Kenia",
       "PartidaEnCurso": false,
-      "PuntajeEnTotal": 21,
+      "PuntajeEnTotal": 58,
       "PartidasGanadas": 1
     },
     "JugadorDos": {
       "$id": "10",
+      "Usuario": "llauu",
+      "Nombre": "Lautaro",
+      "Apellido": "Monserrat",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 99,
+      "PartidasGanadas": 1
+    },
+    "RegistroDeJuego": "Turno 1:\n\nElMarto tiro los dados y saco: 3, 4, 6, 3 y 6\nSe guardo 2 dados con el valor 3.\n\nElMarto tiro los dados y saco: 3, 2, 2, 3 y 5\nSe guardo 2 dados con el valor 3.\n\nElMarto tiro los dados y saco: 3, 3, 4, 3 y 5\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 2:\n\nllauu tiro los dados y saco: 6, 6, 6, 5 y 4\nAnoto 18 puntos al 6.\n\n------------------------------------------------------------------\nTurno 3:\n\nElMarto tiro los dados y saco: 6, 3, 2, 5 y 1\nSe guardo el dado con el valor 5.\nSe guardo el dado con el valor 3.\n\nElMarto tiro los dados y saco: 1, 3, 3, 5 y 1\nSe guardo 2 dados con el valor 1.\n\nElMarto tiro los dados y saco: 1, 3, 1, 5 y 1\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nTurno 4:\n\nllauu tiro los dados y saco: 5, 3, 2, 1 y 5\nSe guardo 2 dados con el valor 5.\n\nllauu tiro los dados y saco: 5, 2, 2, 1 y 5\nSe guardo 2 dados con el valor 5.\n\nllauu tiro los dados y saco: 5, 6, 5, 1 y 5\nAnoto 15 puntos al 5.\n\n------------------------------------------------------------------\nTurno 5:\n\nElMarto tiro los dados y saco: 3, 4, 4, 2 y 4\nAnoto 12 puntos al 4.\n\n------------------------------------------------------------------\nTurno 6:\n\nllauu tiro los dados y saco: 6, 5, 3, 3 y 3\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 7:\n\nElMarto tiro los dados y saco: 3, 3, 4, 4 y 3\nSe guardo 3 dados con el valor 3.\n\nElMarto tiro los dados y saco: 3, 3, 3, 5 y 3\nHizo poker y anoto 40 puntos.\n\n------------------------------------------------------------------\nTurno 8:\n\nllauu tiro los dados y saco: 1, 1, 2, 1 y 5\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nElMarto GANO el juego!\n",
+    "UsuarioGanador": "ElMarto"
+  },
+  {
+    "$id": "11",
+    "Id": 644126,
+    "JugadasJugadorUno": {
+      "$id": "12",
+      "1": 3,
+      "2": 6,
+      "3": -1,
+      "4": 4,
+      "5": 15,
+      "6": -1,
+      "Escalera": -1,
+      "Full": -1,
+      "Poker": -1,
+      "Generala": -1
+    },
+    "JugadasJugadorDos": {
+      "$id": "13",
+      "1": 3,
+      "2": -1,
+      "3": 9,
+      "4": -1,
+      "5": 10,
+      "6": 12,
+      "Escalera": -1,
+      "Full": -1,
+      "Poker": -1,
+      "Generala": -1
+    },
+    "JugadorUno": {
+      "$id": "14",
+      "Usuario": "llauu",
+      "Nombre": "Lautaro",
+      "Apellido": "Monserrat",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 121,
+      "PartidasGanadas": 1
+    },
+    "JugadorDos": {
+      "$id": "15",
+      "Usuario": "NoLoHagasPeter",
+      "Nombre": "Peter",
+      "Apellido": "Gucki",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 28,
+      "PartidasGanadas": 1
+    },
+    "RegistroDeJuego": "Turno 1:\n\nllauu tiro los dados y saco: 2, 2, 6, 4 y 5\nSe guardo 2 dados con el valor 2.\n\nllauu tiro los dados y saco: 2, 2, 4, 6 y 5\nSe guardo 2 dados con el valor 2.\n\nllauu tiro los dados y saco: 2, 2, 2, 4 y 4\nAnoto 6 puntos al 2.\n\n------------------------------------------------------------------\nTurno 2:\n\nNoLoHagasPeter tiro los dados y saco: 4, 1, 6, 2 y 6\nSe guardo 2 dados con el valor 6.\n\nNoLoHagasPeter tiro los dados y saco: 5, 2, 6, 5 y 6\nSe guardo 2 dados con el valor 5.\n\nNoLoHagasPeter tiro los dados y saco: 5, 3, 6, 5 y 6\nAnoto 10 puntos al 5.\n\n------------------------------------------------------------------\nTurno 3:\n\nllauu tiro los dados y saco: 1, 2, 3, 1 y 3\nSe guardo 2 dados con el valor 1.\n\nllauu tiro los dados y saco: 1, 1, 2, 1 y 3\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nTurno 4:\n\nNoLoHagasPeter tiro los dados y saco: 1, 5, 3, 3 y 3\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 5:\n\nllauu tiro los dados y saco: 5, 5, 1, 3 y 5\nAnoto 15 puntos al 5.\n\n------------------------------------------------------------------\nTurno 6:\n\nNoLoHagasPeter tiro los dados y saco: 6, 4, 1, 5 y 3\nSe guardo el dado con el valor 6.\nSe guardo el dado con el valor 5.\n\nNoLoHagasPeter tiro los dados y saco: 6, 1, 3, 5 y 2\nSe guardo el dado con el valor 3.\nSe guardo el dado con el valor 2.\n\nNoLoHagasPeter tiro los dados y saco: 6, 6, 3, 5 y 2\nAnoto 12 puntos al 6.\n\n------------------------------------------------------------------\nTurno 7:\n\nllauu tiro los dados y saco: 6, 5, 4, 3 y 2\nSe guardo el dado con el valor 2.\nSe guardo el dado con el valor 5.\n\nllauu tiro los dados y saco: 2, 5, 4, 2 y 2\nSe guardo 3 dados con el valor 2.\n\nllauu tiro los dados y saco: 2, 5, 4, 2 y 2\nAnoto 4 puntos al 4.\n\n------------------------------------------------------------------\nTurno 8:\n\nNoLoHagasPeter tiro los dados y saco: 1, 2, 2, 1 y 6\nSe guardo 2 dados con el valor 1.\n\nNoLoHagasPeter tiro los dados y saco: 1, 3, 1, 1 y 4\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nNoLoHagasPeter GANO el juego!\n",
+    "UsuarioGanador": "NoLoHagasPeter"
+  },
+  {
+    "$id": "16",
+    "Id": 144570,
+    "JugadasJugadorUno": {
+      "$id": "17",
+      "1": 3,
+      "2": 6,
+      "3": -1,
+      "4": 12,
+      "5": -1,
+      "6": -1,
+      "Escalera": -1,
+      "Full": 30,
+      "Poker": -1,
+      "Generala": -1
+    },
+    "JugadasJugadorDos": {
+      "$id": "18",
+      "1": -1,
+      "2": 6,
+      "3": -1,
+      "4": 12,
+      "5": -1,
+      "6": 18,
+      "Escalera": -1,
+      "Full": -1,
+      "Poker": 40,
+      "Generala": -1
+    },
+    "JugadorUno": {
+      "$id": "19",
+      "Usuario": "Riqui77",
+      "Nombre": "Helio",
+      "Apellido": "Riquelme",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 45,
+      "PartidasGanadas": 0
+    },
+    "JugadorDos": {
+      "$id": "20",
       "Usuario": "KikiGamer",
       "Nombre": "Kiki",
       "Apellido": "Jema",
       "PartidaEnCurso": false,
-      "PuntajeEnTotal": 20,
+      "PuntajeEnTotal": 70,
+      "PartidasGanadas": 1
+    },
+    "RegistroDeJuego": "Turno 1:\n\nRiqui77 tiro los dados y saco: 3, 4, 4, 1 y 1\nSe guardo 2 dados con el valor 4.\n\nRiqui77 tiro los dados y saco: 4, 4, 4, 5 y 2\nAnoto 12 puntos al 4.\n\n------------------------------------------------------------------\nTurno 2:\n\nKikiGamer tiro los dados y saco: 6, 2, 4, 4 y 2\nSe guardo 2 dados con el valor 2.\n\nKikiGamer tiro los dados y saco: 3, 2, 2, 6 y 2\nAnoto 6 puntos al 2.\n\n------------------------------------------------------------------\nTurno 3:\n\nRiqui77 tiro los dados y saco: 2, 3, 5, 2 y 3\nSe guardo 2 dados con el valor 2.\n\nRiqui77 tiro los dados y saco: 2, 1, 6, 2 y 4\nSe guardo 2 dados con el valor 2.\n\nRiqui77 tiro los dados y saco: 2, 1, 4, 2 y 2\nAnoto 6 puntos al 2.\n\n------------------------------------------------------------------\nTurno 4:\n\nKikiGamer tiro los dados y saco: 6, 1, 6, 6 y 5\nAnoto 18 puntos al 6.\n\n------------------------------------------------------------------\nTurno 5:\n\nRiqui77 tiro los dados y saco: 1, 1, 6, 4 y 2\nSe guardo 2 dados con el valor 1.\n\nRiqui77 tiro los dados y saco: 1, 1, 1, 3 y 2\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nTurno 6:\n\nKikiGamer tiro los dados y saco: 4, 4, 3, 5 y 5\nSe guardo 2 dados con el valor 4.\n\nKikiGamer tiro los dados y saco: 4, 4, 5, 4 y 1\nAnoto 12 puntos al 4.\n\n------------------------------------------------------------------\nTurno 7:\n\nRiqui77 tiro los dados y saco: 3, 5, 1, 1 y 5\nSe guardo 2 dados con el valor 5.\n\nRiqui77 tiro los dados y saco: 6, 5, 6, 5 y 5\nHizo full y anoto 30 puntos.\n\n------------------------------------------------------------------\nTurno 8:\n\nKikiGamer tiro los dados y saco: 5, 4, 1, 1 y 4\nSe guardo 2 dados con el valor 4.\n\nKikiGamer tiro los dados y saco: 3, 4, 4, 6 y 4\nSe guardo 3 dados con el valor 4.\n\nKikiGamer tiro los dados y saco: 2, 4, 4, 4 y 4\nHizo poker y anoto 40 puntos.\n\n------------------------------------------------------------------\nKikiGamer GANO el juego!\n",
+    "UsuarioGanador": "KikiGamer"
+  },
+  {
+    "$id": "21",
+    "Id": 616937,
+    "JugadasJugadorUno": {
+      "$id": "22",
+      "1": 3,
+      "2": 4,
+      "3": -1,
+      "4": 12,
+      "5": -1,
+      "6": -1,
+      "Escalera": -1,
+      "Full": -1,
+      "Poker": 40,
+      "Generala": -1
+    },
+    "JugadasJugadorDos": {
+      "$id": "23",
+      "1": 3,
+      "2": -1,
+      "3": 9,
+      "4": 12,
+      "5": -1,
+      "6": 12,
+      "Escalera": -1,
+      "Full": -1,
+      "Poker": -1,
+      "Generala": -1
+    },
+    "JugadorUno": {
+      "$id": "24",
+      "Usuario": "ElMarto",
+      "Nombre": "Martin",
+      "Apellido": "Kenia",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 111,
+      "PartidasGanadas": 2
+    },
+    "JugadorDos": {
+      "$id": "25",
+      "Usuario": "LazoMArto",
+      "Nombre": "Lazo",
+      "Apellido": "Martinez",
+      "PartidaEnCurso": false,
+      "PuntajeEnTotal": 89,
       "PartidasGanadas": 0
     },
-    "RegistroDeJuego": "Turno 1:\n\nElMarto tiro los dados y saco: 1, 2, 4, 6 y 5\nSe guardo el dado con el valor 4.\nSe guardo el dado con el valor 1.\n\nElMarto tiro los dados y saco: 1, 5, 4, 5 y 6\nSe guardo 2 dados con el valor 5.\n\nElMarto tiro los dados y saco: 1, 5, 4, 5 y 4\nAnoto 8 puntos al 4.\n\n------------------------------------------------------------------\nTurno 2:\n\nKikiGamer tiro los dados y saco: 2, 4, 6, 2 y 2\nAnoto 6 puntos al 2.\n\n------------------------------------------------------------------\nTurno 3:\n\nElMarto tiro los dados y saco: 6, 5, 6, 5 y 6\nAnoto 18 puntos al 6.\n\n------------------------------------------------------------------\nTurno 4:\n\nKikiGamer tiro los dados y saco: 6, 1, 6, 3 y 6\nAnoto 18 puntos al 6.\n\n------------------------------------------------------------------\nTurno 5:\n\nElMarto tiro los dados y saco: 4, 5, 1, 2 y 3\nSe guardo el dado con el valor 3.\nSe guardo el dado con el valor 1.\n\nElMarto tiro los dados y saco: 1, 6, 1, 6 y 3\nSe guardo 2 dados con el valor 1.\n\nElMarto tiro los dados y saco: 1, 2, 1, 2 y 3\nAnoto 2 puntos al 1.\n\n------------------------------------------------------------------\nTurno 6:\n\nKikiGamer tiro los dados y saco: 3, 6, 2, 5 y 1\nSe guardo el dado con el valor 2.\nSe guardo el dado con el valor 3.\n\nKikiGamer tiro los dados y saco: 3, 6, 2, 2 y 1\nSe guardo 2 dados con el valor 2.\n\nKikiGamer tiro los dados y saco: 3, 6, 2, 2 y 5\nAnoto 3 puntos al 3.\n\n------------------------------------------------------------------\n\nPARTIDA CANCELADA\nElMarto GANO el juego!\n",
+    "RegistroDeJuego": "Turno 1:\n\nElMarto tiro los dados y saco: 1, 3, 2, 5 y 4\nSe guardo el dado con el valor 1.\nSe guardo el dado con el valor 3.\n\nElMarto tiro los dados y saco: 1, 3, 2, 4 y 1\nSe guardo 2 dados con el valor 1.\n\nElMarto tiro los dados y saco: 1, 3, 1, 1 y 1\nHizo poker y anoto 40 puntos.\n\n------------------------------------------------------------------\nTurno 2:\n\nLazoMArto tiro los dados y saco: 4, 1, 5, 1 y 6\nSe guardo 2 dados con el valor 1.\n\nLazoMArto tiro los dados y saco: 6, 1, 4, 1 y 2\nSe guardo 2 dados con el valor 1.\n\nLazoMArto tiro los dados y saco: 5, 1, 3, 1 y 1\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nTurno 3:\n\nElMarto tiro los dados y saco: 3, 2, 2, 1 y 5\nSe guardo 2 dados con el valor 2.\n\nElMarto tiro los dados y saco: 5, 2, 2, 3 y 1\nSe guardo 2 dados con el valor 2.\n\nElMarto tiro los dados y saco: 3, 2, 2, 3 y 4\nAnoto 4 puntos al 2.\n\n------------------------------------------------------------------\nTurno 4:\n\nLazoMArto tiro los dados y saco: 6, 5, 6, 3 y 5\nSe guardo 2 dados con el valor 6.\n\nLazoMArto tiro los dados y saco: 6, 5, 6, 4 y 3\nSe guardo 2 dados con el valor 6.\n\nLazoMArto tiro los dados y saco: 6, 3, 6, 5 y 2\nAnoto 12 puntos al 6.\n\n------------------------------------------------------------------\nTurno 5:\n\nElMarto tiro los dados y saco: 1, 1, 1, 2 y 5\nAnoto 3 puntos al 1.\n\n------------------------------------------------------------------\nTurno 6:\n\nLazoMArto tiro los dados y saco: 5, 3, 4, 1 y 4\nSe guardo 2 dados con el valor 4.\n\nLazoMArto tiro los dados y saco: 3, 2, 4, 3 y 4\nSe guardo 2 dados con el valor 3.\n\nLazoMArto tiro los dados y saco: 3, 3, 4, 3 y 4\nAnoto 9 puntos al 3.\n\n------------------------------------------------------------------\nTurno 7:\n\nElMarto tiro los dados y saco: 2, 3, 5, 6 y 4\nSe guardo el dado con el valor 2.\nSe guardo el dado con el valor 5.\n\nElMarto tiro los dados y saco: 2, 3, 5, 4 y 4\nSe guardo 2 dados con el valor 4.\n\nElMarto tiro los dados y saco: 2, 4, 5, 4 y 4\nAnoto 12 puntos al 4.\n\n------------------------------------------------------------------\nTurno 8:\n\nLazoMArto tiro los dados y saco: 6, 4, 2, 4 y 2\nSe guardo 2 dados con el valor 4.\n\nLazoMArto tiro los dados y saco: 3, 4, 6, 4 y 2\nSe guardo 2 dados con el valor 4.\n\nLazoMArto tiro los dados y saco: 6, 4, 4, 4 y 5\nAnoto 12 puntos al 4.\n\n------------------------------------------------------------------\nElMarto GANO el juego!\n",
     "UsuarioGanador": "ElMarto"
   }
 ]

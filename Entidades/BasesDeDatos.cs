@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Entidades {
     public class BasesDeDatos {
@@ -187,6 +188,45 @@ namespace Entidades {
                 string sql = "INSERT INTO Jugadores ";
                 sql += "(usuario, nombre, apellido, partidasGanadas, puntajeEnTotal) ";
                 sql += "VALUES (@usuario, @nombre, @apellido, @partidasGanadas, @puntajeEnTotal);";
+
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = sql;
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (filasAfectadas == 0) {
+                    rta = false;
+                }
+            }
+            catch (Exception) {
+                rta = false;
+                throw;
+            }
+            finally {
+                if (this.conexion.State == ConnectionState.Open) {
+                    this.conexion.Close();
+                }
+            }
+
+            return rta;
+        }
+
+        public bool ModificarJugador(Jugador param) {
+            bool rta = true;
+
+            try {
+                this.comando = new SqlCommand();
+
+                this.comando.Parameters.AddWithValue("@usuario", param.Usuario);
+                this.comando.Parameters.AddWithValue("@partidasGanadas", param.PartidasGanadas);
+                this.comando.Parameters.AddWithValue("@puntajeEnTotal", param.PuntajeEnTotal);
+
+                string sql = "UPDATE Jugadores ";
+                sql += "SET partidasGanadas = @partidasGanadas, puntajeEnTotal = @puntajeEnTotal ";
+                sql += "WHERE usuario = @usuario";
 
                 this.comando.CommandType = CommandType.Text;
                 this.comando.CommandText = sql;

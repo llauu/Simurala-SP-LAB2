@@ -56,12 +56,13 @@ namespace Entidades {
         public Dictionary<string, int> JugadasJugadorDos { get => jugadasJugadorDos; set => jugadasJugadorDos = value; }
         public Jugador? JugadorUno { get => jugadorUno; set => jugadorUno = value; }
         public Jugador? JugadorDos { get => jugadorDos; set => jugadorDos = value; }
-        [JsonIgnore]
-        public Dado[] Dados { get => dados; }
         public string RegistroDeJuego { get => registroDeJuego; set => registroDeJuego = value; }
+        public string UsuarioGanador { get => usuarioGanador; set => usuarioGanador = value; }
+
         [JsonIgnore]
         public bool PartidaIniciada { get => partidaIniciada; }
-        public string UsuarioGanador { get => usuarioGanador; set => usuarioGanador = value; }
+        [JsonIgnore]
+        public Dado[] Dados { get => dados; }
         [JsonIgnore]
         public CancellationTokenSource CancellationSource { get => cancellationSource; }
         [JsonIgnore]
@@ -498,6 +499,15 @@ namespace Entidades {
 
         public static bool operator !=(Partida partida1, Partida partida2) {
             return !(partida1 == partida2);
+        }
+
+        public override bool Equals(object? obj) {
+            Partida? partida = obj as Partida;
+            return partida is not null && this == partida;
+        }
+
+        public override int GetHashCode() {
+            return this.id;
         }
     }
 }
