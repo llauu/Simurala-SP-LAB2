@@ -72,19 +72,19 @@ namespace Entidades {
         }
 
         public static bool ValidarJugadores(Jugador jugador1, Jugador jugador2) {
-            bool jugadorValido = true;
+            bool jugadoresValidos = true;
 
             if(jugador1 == jugador2) {
-                jugadorValido = false;
+                jugadoresValidos = false;
                 throw new Exception("No se pueden seleccionar dos jugadores iguales.");
             }
 
             if(jugador1.PartidaEnCurso || jugador2.PartidaEnCurso) {
-                jugadorValido = false;
+                jugadoresValidos = false;
                 throw new Exception("No se pueden seleccionar jugadores con partidas en curso.");
             }
 
-            return jugadorValido;
+            return jugadoresValidos;
         }
 
         public static string ValidarUsuarioDeJugadorUnico(string usuario) {
@@ -105,23 +105,6 @@ namespace Entidades {
             }
 
             return clave;
-        }
-        
-        public static int ValidarNumeroPositivo(int numero) {
-            if (!(numero > 0 && numero < 100000)) {
-                throw new Exception("Campos numericos no validos.");
-            }
-
-            return numero;
-        }
-
-
-        public static float ValidarFlotantePositivo(float numero) {
-            if (!(numero > 0 && numero < 100000)) {
-                throw new Exception("Campos numericos no validos.");
-            }
-
-            return numero;
         }
     }
 }

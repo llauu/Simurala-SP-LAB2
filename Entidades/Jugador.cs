@@ -38,21 +38,21 @@ namespace Entidades {
         }
 
         public static bool operator ==(Jugador jugador1, Jugador jugador2) {
-            return jugador1.usuario == jugador2.usuario;
+            bool rta = false;
+
+            if(((object?)jugador1) == null && ((object?)jugador2) == null) {
+                rta = true;
+            }
+            else {
+                if(jugador1 is not null && jugador2 is not null && jugador1.usuario == jugador2.usuario && jugador1.nombre == jugador2.nombre && jugador1.apellido == jugador2.apellido) {
+                    rta = true;
+                }
+            }
+            return rta;
         }
 
         public static bool operator !=(Jugador jugador1, Jugador jugador2) {
             return !(jugador1 == jugador2);
-        }
-
-        public override bool Equals(object? obj) {
-            Jugador? jugador = obj as Jugador;
-
-            return jugador is not null && this == jugador;
-        }
-
-        public override int GetHashCode() {
-            return this.usuario!.GetHashCode();
         }
 
         public override string ToString() {

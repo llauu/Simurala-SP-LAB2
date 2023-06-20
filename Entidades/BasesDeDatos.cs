@@ -47,7 +47,6 @@ namespace Entidades {
             return rta;
         }
 
-
         public List<Usuario> ObtenerListaUsuarios() {
             List<Usuario> lista = new List<Usuario>();
 

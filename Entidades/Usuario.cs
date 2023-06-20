@@ -46,8 +46,26 @@ namespace Entidades {
             return clave == this.clave;
         }
 
+        public static bool operator ==(Usuario usuario1, Usuario usuario2) {
+            bool rta = false;
+
+            if (((object?)usuario1) == null && ((object?)usuario2) == null) {
+                rta = true;
+            }
+            else {
+                if (usuario1 is not null && usuario2 is not null && usuario1.id == usuario2.id && usuario1.nombre == usuario2.nombre && usuario1.apellido == usuario2.apellido) {
+                    rta = true;
+                }
+            }
+            return rta;
+        }
+
+        public static bool operator !=(Usuario usuario1, Usuario usuario2) {
+            return !(usuario1 == usuario2);
+        }
+
         public override string ToString() {
-            return $"{this.nombre}";
+            return $"{this.nombre} {this.apellido}";
         }
     }
 }

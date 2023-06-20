@@ -9,6 +9,6 @@ namespace Entidades {
         public abstract string Nombre { get; set; }
         public abstract string Apellido { get; set; }
 
-        public abstract string ToString();
+        public string ToString();
     }
 }

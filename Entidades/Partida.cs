@@ -166,6 +166,7 @@ namespace Entidades {
             }
             else {
                 registroDeJuego += $"El juego termino en EMPATE!\n";
+                this.usuarioGanador = "Empate";
             }
 
             DelegadoCambioRegistro?.Invoke();
@@ -190,7 +191,7 @@ namespace Entidades {
             }
         }
 
-        private void JugarTurno(Jugador jugador) {
+        public void JugarTurno(Jugador jugador) {
             int numeroTirada = 0;
             bool repetirTirada;
             bool esUltimoTiro = false;
@@ -479,6 +480,24 @@ namespace Entidades {
             }
 
             return contador;
+        }
+
+        public static bool operator ==(Partida partida1, Partida partida2) {
+            bool rta = false;
+
+            if (((object?)partida1) == null && ((object?)partida2) == null) {
+                rta = true;
+            }
+            else {
+                if (partida1 is not null && partida2 is not null && partida1.id == partida2.id) {
+                    rta = true;
+                }
+            }
+            return rta;
+        }
+
+        public static bool operator !=(Partida partida1, Partida partida2) {
+            return !(partida1 == partida2);
         }
     }
 }
