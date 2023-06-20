@@ -36,8 +36,8 @@
             label3 = new Label();
             lblCorreo = new Label();
             panel2 = new Panel();
-            label2 = new Label();
             label1 = new Label();
+            label2 = new Label();
             btnIngresar = new Button();
             btnRegistrarse = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -52,9 +52,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Location = new Point(57, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(119, 85);
+            pictureBox1.Size = new Size(119, 86);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -171,36 +171,39 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.None;
-            panel2.BackColor = Color.Snow;
+            panel2.BackColor = Color.Gainsboro;
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(78, 28);
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(265, 85);
+            panel2.Size = new Size(421, 113);
             panel2.TabIndex = 6;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.None;
-            label2.BackColor = Color.WhiteSmoke;
-            label2.Font = new Font("Unispace", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(116, 45);
-            label2.Name = "label2";
-            label2.Size = new Size(150, 32);
-            label2.TabIndex = 3;
-            label2.Text = "Simulator";
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
-            label1.BackColor = Color.WhiteSmoke;
-            label1.Font = new Font("Unispace", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(116, 13);
+            label1.BackColor = Color.Gainsboro;
+            label1.Font = new Font("Bernard MT Condensed", 35F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label1.ForeColor = Color.DarkSalmon;
+            label1.Location = new Point(270, 32);
             label1.Name = "label1";
-            label1.Size = new Size(149, 32);
-            label1.TabIndex = 2;
-            label1.Text = "Generala ";
+            label1.Size = new Size(106, 54);
+            label1.TabIndex = 7;
+            label1.Text = "rala";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.BackColor = Color.Gainsboro;
+            label2.Font = new Font("Bernard MT Condensed", 35F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.MediumSlateBlue;
+            label2.Location = new Point(174, 32);
+            label2.Margin = new Padding(0);
+            label2.Name = "label2";
+            label2.Size = new Size(115, 54);
+            label2.TabIndex = 3;
+            label2.Text = "Simu";
             // 
             // btnIngresar
             // 
@@ -210,7 +213,7 @@
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(247, 457);
+            btnIngresar.Location = new Point(247, 453);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(115, 34);
             btnIngresar.TabIndex = 3;
@@ -226,7 +229,7 @@
             btnRegistrarse.FlatAppearance.BorderSize = 0;
             btnRegistrarse.FlatStyle = FlatStyle.Flat;
             btnRegistrarse.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRegistrarse.Location = new Point(57, 457);
+            btnRegistrarse.Location = new Point(57, 453);
             btnRegistrarse.Name = "btnRegistrarse";
             btnRegistrarse.Size = new Size(115, 34);
             btnRegistrarse.TabIndex = 4;
@@ -238,13 +241,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Snow;
+            BackColor = Color.FromArgb(29, 35, 39);
             ClientSize = new Size(421, 512);
             Controls.Add(btnRegistrarse);
             Controls.Add(btnIngresar);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(437, 551);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Iniciar sesion";
@@ -266,7 +270,6 @@
 
         private PictureBox pictureBox1;
         private Panel panel1;
-        private Label label1;
         private Button btnIngresar;
         private Label label2;
         private Button btnRegistrarse;
@@ -280,5 +283,6 @@
         private Label lblError;
         private PictureBox imgError;
         private Label label4;
+        private Label label1;
     }
 }
