@@ -11,8 +11,7 @@ namespace Interfaz {
                 Sistema.CargarDatos();
             }
             catch (Exception ex) {
-                MessageBox.Show($"Error al cargar el archivo json de usuarios. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show($"Error al cargar los datos del programa. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -60,7 +59,6 @@ namespace Interfaz {
                 menuPrincipal.Show();
             }
         }
-
 
         public static void ActualizarMensajeDeError(PictureBox imgError, Label lblError, string mensaje) {
             imgError.Visible = true;
