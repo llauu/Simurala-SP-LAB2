@@ -8,7 +8,7 @@ namespace Interfaz {
 
         private void FrmLogin_Load(object sender, EventArgs e) {
             try {
-                Sistema.CargarArchivos();
+                Sistema.CargarDatos();
             }
             catch (Exception ex) {
                 MessageBox.Show($"Error al cargar el archivo json de usuarios. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,10 +72,10 @@ namespace Interfaz {
 
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e) {
             try {
-                Sistema.EscribirArchivos();
+                Sistema.GuardarPartidas();
             }
             catch (Exception ex) {
-                MessageBox.Show($"Error al guardar los archivos. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado al guardar la partida. Se cerrara la aplicacion. \n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

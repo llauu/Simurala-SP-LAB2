@@ -56,6 +56,21 @@ namespace Entidades {
             return idUnico;
         }
 
+        public static bool ValidarIdUsuarioUnico(int id) {
+            bool idUnico = true;
+
+            if (Sistema.ListaUsuarios != null) {
+                foreach (Usuario usuario in Sistema.ListaUsuarios) {
+                    if (id == usuario.Id) {
+                        idUnico = false;
+                        break;
+                    }
+                }
+            }
+
+            return idUnico;
+        }
+
         public static bool ValidarJugadores(Jugador jugador1, Jugador jugador2) {
             bool jugadorValido = true;
 
@@ -70,6 +85,18 @@ namespace Entidades {
             }
 
             return jugadorValido;
+        }
+
+        public static string ValidarUsuarioDeJugadorUnico(string usuario) {
+            if (Sistema.ListaJugadores != null) {
+                foreach (Jugador jugador in Sistema.ListaJugadores) {
+                    if (usuario == jugador.Usuario) {
+                        throw new Exception("Usuario no disponible.");
+                    }
+                }
+            }
+
+            return usuario;
         }
 
         public static string ValidarClaveValida(string clave) {

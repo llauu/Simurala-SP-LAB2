@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace Entidades {
-    public static class Archivos<T> where T : IPersona {
+    public static class Archivos<T> where T : class {
         public static List<T>? LeerArchivoJson(List<T>? lista, string rutaJSON) {
             if (File.Exists(rutaJSON)) {
                 using (StreamReader sr = new StreamReader(rutaJSON)) {
@@ -24,6 +24,7 @@ namespace Entidades {
 
             JsonSerializerSettings configuracion = new JsonSerializerSettings();
             configuracion.Formatting = Formatting.Indented;
+            configuracion.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
 
             using (StreamWriter sw = new StreamWriter(rutaJSON)) {
                 string json_str = JsonConvert.SerializeObject(lista, configuracion);
@@ -33,6 +34,23 @@ namespace Entidades {
             }
 
             return guardado;
+        }
+
+        public static bool DescargarRegristroPartida(Partida partida, string ruta) {
+            bool descargado = false;
+
+            if(partida != null) {
+                string registro = partida.RegistroDeJuego;
+
+                using (StreamWriter file = new StreamWriter(ruta, false, Encoding.UTF8)) {
+                    file.WriteLine(registro);
+                    file.Close();
+
+                    descargado = true;
+                }
+            }
+
+            return descargado;
         }
     }
 }

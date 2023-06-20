@@ -13,6 +13,8 @@ namespace Interfaz {
     public partial class FrmEstadisticas : Form {
         public FrmEstadisticas() {
             InitializeComponent();
+
+            this.toolTip1.SetToolTip(this.btn_DescargarHistorial, "Descargar registro de la partida");
         }
 
         private void FrmEstadisticas_Load(object sender, EventArgs e) {
@@ -34,10 +36,47 @@ namespace Interfaz {
                 dgv_JugadoresConPuntos.Columns["Key"].HeaderText = "Jugador";
                 dgv_JugadoresConPuntos.Columns["Value"].HeaderText = "Puntaje";
             }
+
+            if (Sistema.ListaPartidas.Count > 0) {
+                dgv_HistorialPartidas.DataSource = null;
+                dgv_HistorialPartidas.DataSource = Sistema.ListaPartidas;
+
+                dgv_HistorialPartidas.Columns["Id"].HeaderText = "ID";
+                dgv_HistorialPartidas.Columns["JugadorUno"].HeaderText = "Jugador 1";
+                dgv_HistorialPartidas.Columns["JugadorDos"].HeaderText = "Jugador 2";
+                dgv_HistorialPartidas.Columns["JugadasJugadorUno"].Visible = false;
+                dgv_HistorialPartidas.Columns["JugadasJugadorDos"].Visible = false;
+                dgv_HistorialPartidas.Columns["PartidaIniciada"].Visible = false;
+                dgv_HistorialPartidas.Columns["RegistroDeJuego"].Visible = false;
+                dgv_HistorialPartidas.Columns["CancellationSource"].Visible = false;
+                dgv_HistorialPartidas.Columns["Cancellation"].Visible = false;
+
+                dgv_HistorialPartidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgv_HistorialPartidas.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void btn_Aceptar_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void btn_DescargarHistorial_Click(object sender, EventArgs e) {
+            if (dgv_HistorialPartidas.Rows.Count > 0) {
+                Partida partidaSeleccionada = (Partida)dgv_HistorialPartidas.CurrentRow.DataBoundItem;
+
+                if (partidaSeleccionada != null) {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                    saveFileDialog.DefaultExt = ".log";
+                    saveFileDialog.FileName = $"registro_partida_{partidaSeleccionada.Id}";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+                        if (Archivos<Partida>.DescargarRegristroPartida(partidaSeleccionada, saveFileDialog.FileName)) {
+                            MessageBox.Show($"Archivo descargado con exito!\n\nGuardado en: \n{saveFileDialog.FileName}", "Archivo descargado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
         }
     }
 }

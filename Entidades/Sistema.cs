@@ -2,11 +2,10 @@
 
 namespace Entidades {
     public static class Sistema {
-        private static List<Usuario>? listaUsuarios;
-        private static List<Jugador>? listaJugadores;
-        private static List<Partida> listaPartidas;
-        private static string rutaUsuariosJson;
-        private static string rutaJugadoresJson;
+        private static List<Usuario> listaUsuarios;
+        private static List<Jugador> listaJugadores;
+        private static List<Partida>? listaPartidas;
+        private static string rutaPartidasJson;
         private static string rutaImagenDadoUno;
         private static string rutaImagenDadoDos;
         private static string rutaImagenDadoTres;
@@ -15,8 +14,8 @@ namespace Entidades {
         private static string rutaImagenDadoSeis;
 
 
-        public static List<Usuario> ListaUsuarios { get => listaUsuarios!; }
-        public static List<Jugador> ListaJugadores { get => listaJugadores!; }
+        public static List<Usuario> ListaUsuarios { get => listaUsuarios; }
+        public static List<Jugador> ListaJugadores { get => listaJugadores; }
         public static List<Partida> ListaPartidas { get => listaPartidas; }
         public static string RutaImagenDadoUno { get => rutaImagenDadoUno; }
         public static string RutaImagenDadoDos { get => rutaImagenDadoDos; }
@@ -30,8 +29,7 @@ namespace Entidades {
             listaJugadores = new List<Jugador>();
             listaPartidas = new List<Partida>();
 
-            rutaUsuariosJson = @"..\..\..\..\db\datosUsuarios.json";
-            rutaJugadoresJson = @"..\..\..\..\db\datosJugadores.json";
+            rutaPartidasJson = @"..\..\..\..\db\datosPartidas.json";
             rutaImagenDadoUno = @"..\..\..\..\Recursos\cara_dados\dados_uno.png";
             rutaImagenDadoDos = @"..\..\..\..\Recursos\cara_dados\dados_dos.png";
             rutaImagenDadoTres = @"..\..\..\..\Recursos\cara_dados\dados_tres.png";
@@ -43,17 +41,20 @@ namespace Entidades {
         /// <summary>
         /// Lee los archivos en donde se encuentran los datos utilizados anteriormente
         /// </summary>
-        public static void CargarArchivos() {
-            listaUsuarios = Archivos<Usuario>.LeerArchivoJson(listaUsuarios, rutaUsuariosJson);
-            listaJugadores = Archivos<Jugador>.LeerArchivoJson(listaJugadores, rutaJugadoresJson);
+        public static void CargarDatos() {
+            BasesDeDatos db = new BasesDeDatos();
+
+            listaPartidas = Archivos<Partida>.LeerArchivoJson(listaPartidas, rutaPartidasJson);
+
+            listaUsuarios = db.ObtenerListaUsuarios();
+            listaJugadores = db.ObtenerListaJugadores();
         }
 
         /// <summary>
         /// Escribe los datos en archivos json para tener permanencia de ellos
         /// </summary>
-        public static void EscribirArchivos() {
-            Archivos<Usuario>.EscribirArchivoJson(listaUsuarios, rutaUsuariosJson);
-            Archivos<Jugador>.EscribirArchivoJson(listaJugadores, rutaJugadoresJson);
+        public static void GuardarPartidas() {
+            Archivos<Partida>.EscribirArchivoJson(listaPartidas, rutaPartidasJson);
         }
 
         /// <summary>
@@ -86,23 +87,41 @@ namespace Entidades {
         /// <param name="clave"></param>
         /// <returns></returns>
         public static bool RegistrarUsuario(string nombre, string apellido, string correo, string clave) {
+            BasesDeDatos db = new BasesDeDatos();
             bool seRegistro = false;
 
             if (listaUsuarios != null) {
-                Usuario usuarioRegistrado = new Usuario(nombre, apellido, correo, clave);
+                int idUnico = Usuario.GenerarIdUsuario();
+                string nombreValidado = Validador.ValidarCadena(nombre);
+                string apellidoValidado = Validador.ValidarCadena(apellido);
+                string correoValidado = Validador.ValidarCorreo(correo);
+                string claveValidado = Validador.ValidarClaveValida(clave);
+
+                Usuario usuarioRegistrado = new Usuario(idUnico, nombreValidado, apellidoValidado, correoValidado, claveValidado);
+
+                db.AgregarUsuario(usuarioRegistrado);
                 listaUsuarios.Add(usuarioRegistrado);
+
                 seRegistro = true;
             }
 
             return seRegistro;
         }
 
-        public static bool CrearJugador(string nombre, string apellido, string usuario) {
+        public static bool CrearJugador(string usuario, string nombre, string apellido) {
+            BasesDeDatos db = new BasesDeDatos();
             bool seCreo = false;
 
             if (listaUsuarios != null) {
-                Jugador jugadorCreado = new Jugador(nombre, apellido, usuario);
-                listaJugadores?.Add(jugadorCreado);
+                string usuarioValidado = Validador.ValidarUsuarioDeJugadorUnico(usuario);
+                string nombreValidado = Validador.ValidarCadena(nombre);
+                string apellidoValidado = Validador.ValidarCadena(apellido);
+
+                Jugador jugadorCreado = new Jugador(usuarioValidado, nombreValidado, apellidoValidado);
+
+                db.AgregarJugador(jugadorCreado);
+                listaJugadores.Add(jugadorCreado);
+
                 seCreo = true;
             }
 
@@ -114,7 +133,6 @@ namespace Entidades {
 
             if (Validador.ValidarJugadores(jugador1, jugador2)) {
                 partidaCreada = new Partida(jugador1, jugador2, DelegadoMostrarDados, DelegadoCambioRegistro);
-                listaPartidas.Add(partidaCreada);
                 jugador1.PartidaEnCurso = true;
                 jugador2.PartidaEnCurso = true;
             }

@@ -18,8 +18,8 @@ namespace Interfaz {
         private FrmLogin? formLogin;
 
         // BORRAR
-        Partida partida;
-        Partida partidaDos;
+        //Partida partida;
+        //Partida partidaDos;
 
         public FrmMenuPrincipal() {
             InitializeComponent();
@@ -27,12 +27,12 @@ namespace Interfaz {
             this.partidasActivas = new List<Partida>();
 
             // BORRAR --------------------------------------------------------
-            partida = new Partida(new Jugador("pepe", "gomez", "pepe777"), new Jugador("maria", "parla", "xXmariaXx"), ActualizarDados, SeleccionarPartida);
-            partidaDos = new Partida(new Jugador("juan", "gomaaez", "juani76"), new Jugador("maria", "parla", "kikiGamer"), ActualizarDados, SeleccionarPartida);
-            partida.NotificadorGanador += InformarGanador;
-            partidaDos.NotificadorGanador += InformarGanador;
-            partidasActivas.Add(partida);
-            partidasActivas.Add(partidaDos);
+            //partida = new Partida(new Jugador("pepe", "gomez", "pepe777"), new Jugador("maria", "parla", "xXmariaXx"), ActualizarDados, SeleccionarPartida);
+            //partidaDos = new Partida(new Jugador("juan", "gomaaez", "juani76"), new Jugador("maria", "parla", "kikiGamer"), ActualizarDados, SeleccionarPartida);
+            //partida.NotificadorGanador += InformarGanador;
+            //partidaDos.NotificadorGanador += InformarGanador;
+            //partidasActivas.Add(partida);
+            //partidasActivas.Add(partidaDos);
             // ---------------------------------------------------------------
 
             this.imagenesDados = new PictureBox[] {
@@ -127,7 +127,7 @@ namespace Interfaz {
                 Partida partida = (Partida)dgv_Partidas.CurrentRow.DataBoundItem;
 
                 if (!partida.PartidaIniciada) {
-                    inicioPartida = new Task(partida.ComenzarPartida);
+                    inicioPartida = new Task(partida.JugarPartida);
                     inicioPartida.Start();
                 }
                 else {
@@ -147,12 +147,12 @@ namespace Interfaz {
         }
 
         private void btn_crearJuego_Click(object sender, EventArgs e) {
-            FrmCrearPartida frmCrearSala = new FrmCrearPartida(ActualizarDados, SeleccionarPartida, InformarGanador);
+            FrmCrearPartida frmCrearPartida = new FrmCrearPartida(ActualizarDados, SeleccionarPartida, InformarGanador);
 
-            if (frmCrearSala.ShowDialog() == DialogResult.OK) {
+            if (frmCrearPartida.ShowDialog() == DialogResult.OK) {
                 MessageBox.Show("Partida creada con exito!", "Partida creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                partidasActivas.Add(frmCrearSala.PartidaCreada);
+                partidasActivas.Add(frmCrearPartida.PartidaCreada);
                 ActualizarListaPartidas();
             }
         }

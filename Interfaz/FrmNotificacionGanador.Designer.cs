@@ -36,7 +36,6 @@
             lbl_Felicitaciones = new Label();
             lbl_Jugador1 = new Label();
             lbl_Jugador2 = new Label();
-            lbl_VictoriasTotales = new Label();
             btn_Continuar = new Button();
             lbl_NPartida = new Label();
             dgv_JugadasJ1 = new DataGridView();
@@ -105,15 +104,6 @@
             lbl_Jugador2.TabIndex = 7;
             lbl_Jugador2.Text = "Jugador 2";
             lbl_Jugador2.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // lbl_VictoriasTotales
-            // 
-            lbl_VictoriasTotales.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_VictoriasTotales.Location = new Point(26, 195);
-            lbl_VictoriasTotales.Name = "lbl_VictoriasTotales";
-            lbl_VictoriasTotales.Size = new Size(315, 30);
-            lbl_VictoriasTotales.TabIndex = 8;
-            lbl_VictoriasTotales.Text = "Victorias totales de (nombre): X";
             // 
             // btn_Continuar
             // 
@@ -227,7 +217,6 @@
             Controls.Add(dgv_JugadasJ1);
             Controls.Add(lbl_NPartida);
             Controls.Add(btn_Continuar);
-            Controls.Add(lbl_VictoriasTotales);
             Controls.Add(lbl_Jugador2);
             Controls.Add(lbl_Jugador1);
             Controls.Add(lbl_Felicitaciones);
@@ -253,7 +242,6 @@
         private Label lbl_Felicitaciones;
         private Label lbl_Jugador1;
         private Label lbl_Jugador2;
-        private Label lbl_VictoriasTotales;
         private Button btn_Continuar;
         private Label lbl_NPartida;
         private DataGridView dgv_JugadasJ1;

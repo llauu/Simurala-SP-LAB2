@@ -16,13 +16,13 @@ namespace Interfaz {
         }
 
         private void btn_Crear_Click(object sender, EventArgs e) {
+            string usuario = this.txt_usuario.Text;
             string nombre = this.txt_nombre.Text;
             string apellido = this.txt_apellido.Text;
-            string usuario = this.txt_usuario.Text;
 
             if (!String.IsNullOrEmpty(nombre) && !String.IsNullOrEmpty(apellido) && !String.IsNullOrEmpty(usuario)) {
                 try {
-                    if (Sistema.CrearJugador(nombre, apellido, usuario)) {
+                    if (Sistema.CrearJugador(usuario, nombre, apellido)) {
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Entidades {
     public class Partida {
@@ -11,17 +12,21 @@ namespace Entidades {
         private Dictionary<string, int> jugadasJugadorUno;
         private Dictionary<string, int> jugadasJugadorDos;
         public event Action<Partida>? NotificadorGanador;
-        public Action<Dado[]>? DelegadoMostrarDados;
-        public Action? DelegadoCambioRegistro;
         private string registroDeJuego;
         private bool partidaIniciada;
         private Jugador? jugadorUno;
         private Jugador? jugadorDos;
-        private Jugador? ganador;
+        private string usuarioGanador;
         private Dado[] dados;
         private int id;
 
-        private Partida() {
+        [JsonIgnore]
+        public Action<Dado[]>? DelegadoMostrarDados;
+
+        [JsonIgnore]
+        public Action? DelegadoCambioRegistro;
+
+        public Partida() {
             this.cancellationSource = new CancellationTokenSource();
             this.cancellation = this.cancellationSource.Token;                                                       
 
@@ -30,7 +35,7 @@ namespace Entidades {
             this.partidaIniciada = false;
             this.registroDeJuego = String.Empty;
             this.dados = new Dado[5];
-            this.ganador = null;
+            this.usuarioGanador = "Ninguno";
 
             this.id = GenerarIdPartida();
 
@@ -45,16 +50,21 @@ namespace Entidades {
             this.jugadorDos = jugadorDos;
         }
 
-        public int Id { get => id; }
-        public Dictionary<string, int> JugadasJugadorUno { get => jugadasJugadorUno; }
-        public Dictionary<string, int> JugadasJugadorDos { get => jugadasJugadorDos; }
-        public Jugador? JugadorUno { get => jugadorUno; }
-        public Jugador? JugadorDos { get => jugadorDos; }
+        public int Id { get => id; set => id = value; }
+
+        public Dictionary<string, int> JugadasJugadorUno { get => jugadasJugadorUno; set => jugadasJugadorUno = value; }
+        public Dictionary<string, int> JugadasJugadorDos { get => jugadasJugadorDos; set => jugadasJugadorDos = value; }
+        public Jugador? JugadorUno { get => jugadorUno; set => jugadorUno = value; }
+        public Jugador? JugadorDos { get => jugadorDos; set => jugadorDos = value; }
+        [JsonIgnore]
         public Dado[] Dados { get => dados; }
-        public string RegistroDeJuego { get => registroDeJuego; }
+        public string RegistroDeJuego { get => registroDeJuego; set => registroDeJuego = value; }
+        [JsonIgnore]
         public bool PartidaIniciada { get => partidaIniciada; }
-        public Jugador? Ganador { get => ganador; }
+        public string UsuarioGanador { get => usuarioGanador; set => usuarioGanador = value; }
+        [JsonIgnore]
         public CancellationTokenSource CancellationSource { get => cancellationSource; }
+        [JsonIgnore]
         public CancellationToken Cancellation { get => cancellation; }
 
         private void InicializarDados() {
@@ -109,7 +119,7 @@ namespace Entidades {
             return puntaje;
         }
 
-        public void ComenzarPartida() {
+        public void JugarPartida() {
             int turnosMaximos = 8;
             int turnosJugados = 0;
             int puntajeJugadorUno;
@@ -147,14 +157,12 @@ namespace Entidades {
             if (puntajeJugadorUno > puntajeJugadorDos) {
                 jugadorUno!.PartidasGanadas += 1;
                 registroDeJuego += $"{jugadorUno.Usuario} GANO el juego!\n";
-                this.ganador = jugadorUno;
-                NotificadorGanador?.Invoke(this);
+                this.usuarioGanador = jugadorUno.Usuario;
             }
             else if (puntajeJugadorUno < puntajeJugadorDos) {
                 jugadorDos!.PartidasGanadas += 1;
                 registroDeJuego += $"{jugadorDos.Usuario} GANO el juego!\n";
-                this.ganador = jugadorDos;
-                NotificadorGanador?.Invoke(this);
+                this.usuarioGanador = jugadorDos.Usuario;
             }
             else {
                 registroDeJuego += $"El juego termino en EMPATE!\n";
@@ -165,7 +173,13 @@ namespace Entidades {
             jugadorUno!.PuntajeEnTotal += puntajeJugadorUno;
             jugadorDos!.PuntajeEnTotal += puntajeJugadorDos;
 
+            // Reinicio el valor del dado para que no se muestre en la interfaz
             dados[0].UltimoValor = 0;
+
+            jugadorUno.PartidaEnCurso = false;
+            jugadorDos.PartidaEnCurso = false;
+
+            NotificadorGanador?.Invoke(this);
         }
 
         private void TirarDados() {

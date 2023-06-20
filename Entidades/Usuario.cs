@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Entidades {
     public class Usuario : IPersona {
-        private static int ultimoId;
-
         private int id;
         private string nombre;
         private string apellido;
@@ -20,16 +18,24 @@ namespace Entidades {
         public string Correo { get => correo; set => correo = value; }
         public string Clave { get => clave; set => clave = value; }
 
-        static Usuario() {
-            ultimoId = 0;
+        public Usuario(int id, string nombre, string apellido, string correo, string clave) {
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.correo = correo;
+            this.clave = clave;
         }
 
-        public Usuario(string nombre, string apellido, string correo, string clave) {
-            this.id = ultimoId++;
-            this.nombre = Validador.ValidarCadena(nombre);
-            this.apellido = Validador.ValidarCadena(apellido);
-            this.correo = Validador.ValidarCorreo(correo);
-            this.clave = Validador.ValidarClaveValida(clave);
+        public static int GenerarIdUsuario() {
+            bool idUnico;
+            int id;
+
+            do {
+                id = Sistema.GenerarIdNumerico();
+                idUnico = Validador.ValidarIdUsuarioUnico(id);
+            } while (!idUnico);
+
+            return id;
         }
 
         public bool ChequearCorreo(string correo) {

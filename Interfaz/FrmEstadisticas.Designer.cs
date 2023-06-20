@@ -23,12 +23,17 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstadisticas));
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             dgv_JugadoresConVictorias = new DataGridView();
             dgv_JugadoresConPuntos = new DataGridView();
             btn_Aceptar = new Button();
@@ -44,6 +49,11 @@
             panel5 = new Panel();
             panel6 = new Panel();
             panel7 = new Panel();
+            panel8 = new Panel();
+            btn_DescargarHistorial = new PictureBox();
+            label2 = new Label();
+            dgv_HistorialPartidas = new DataGridView();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dgv_JugadoresConVictorias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_JugadoresConPuntos).BeginInit();
             panel2.SuspendLayout();
@@ -51,6 +61,9 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_crearJuego).BeginInit();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btn_DescargarHistorial).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_HistorialPartidas).BeginInit();
             SuspendLayout();
             // 
             // dgv_JugadoresConVictorias
@@ -90,7 +103,7 @@
             dgv_JugadoresConVictorias.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgv_JugadoresConVictorias.RowTemplate.Height = 25;
             dgv_JugadoresConVictorias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_JugadoresConVictorias.Size = new Size(193, 275);
+            dgv_JugadoresConVictorias.Size = new Size(170, 275);
             dgv_JugadoresConVictorias.TabIndex = 2;
             // 
             // dgv_JugadoresConPuntos
@@ -120,15 +133,17 @@
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             dgv_JugadoresConPuntos.DefaultCellStyle = dataGridViewCellStyle5;
             dgv_JugadoresConPuntos.EnableHeadersVisualStyles = false;
-            dgv_JugadoresConPuntos.Location = new Point(335, 146);
+            dgv_JugadoresConPuntos.Location = new Point(273, 146);
             dgv_JugadoresConPuntos.MultiSelect = false;
             dgv_JugadoresConPuntos.Name = "dgv_JugadoresConPuntos";
             dgv_JugadoresConPuntos.ReadOnly = true;
             dgv_JugadoresConPuntos.RowHeadersVisible = false;
-            dgv_JugadoresConPuntos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dgv_JugadoresConPuntos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgv_JugadoresConPuntos.RowTemplate.Height = 25;
             dgv_JugadoresConPuntos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_JugadoresConPuntos.Size = new Size(193, 275);
+            dgv_JugadoresConPuntos.Size = new Size(170, 275);
             dgv_JugadoresConPuntos.TabIndex = 3;
             // 
             // btn_Aceptar
@@ -139,9 +154,9 @@
             btn_Aceptar.FlatAppearance.BorderSize = 0;
             btn_Aceptar.FlatStyle = FlatStyle.Flat;
             btn_Aceptar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_Aceptar.Location = new Point(413, 440);
+            btn_Aceptar.Location = new Point(626, 441);
             btn_Aceptar.Name = "btn_Aceptar";
-            btn_Aceptar.Size = new Size(115, 32);
+            btn_Aceptar.Size = new Size(127, 32);
             btn_Aceptar.TabIndex = 10;
             btn_Aceptar.Text = "Aceptar";
             btn_Aceptar.UseVisualStyleBackColor = false;
@@ -154,7 +169,7 @@
             panel2.Controls.Add(lbl_Jugador1);
             panel2.Location = new Point(55, 103);
             panel2.Name = "panel2";
-            panel2.Size = new Size(193, 44);
+            panel2.Size = new Size(170, 44);
             panel2.TabIndex = 23;
             // 
             // lbl_Jugador1
@@ -162,7 +177,7 @@
             lbl_Jugador1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_Jugador1.Location = new Point(-1, 4);
             lbl_Jugador1.Name = "lbl_Jugador1";
-            lbl_Jugador1.Size = new Size(193, 30);
+            lbl_Jugador1.Size = new Size(170, 30);
             lbl_Jugador1.TabIndex = 13;
             lbl_Jugador1.Text = "Victorias";
             lbl_Jugador1.TextAlign = ContentAlignment.MiddleCenter;
@@ -172,9 +187,9 @@
             panel1.BackColor = Color.DarkSalmon;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(335, 103);
+            panel1.Location = new Point(273, 103);
             panel1.Name = "panel1";
-            panel1.Size = new Size(193, 44);
+            panel1.Size = new Size(170, 44);
             panel1.TabIndex = 24;
             // 
             // label1
@@ -182,7 +197,7 @@
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(-1, 4);
             label1.Name = "label1";
-            label1.Size = new Size(193, 30);
+            label1.Size = new Size(170, 30);
             label1.TabIndex = 13;
             label1.Text = "Puntajes";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -194,7 +209,7 @@
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(btn_crearJuego);
-            panel3.Location = new Point(111, 29);
+            panel3.Location = new Point(55, 30);
             panel3.Name = "panel3";
             panel3.Size = new Size(369, 44);
             panel3.TabIndex = 25;
@@ -237,14 +252,14 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(585, 10);
+            panel4.Size = new Size(811, 10);
             panel4.TabIndex = 26;
             // 
             // panel5
             // 
             panel5.BackColor = Color.Gainsboro;
             panel5.Dock = DockStyle.Right;
-            panel5.Location = new Point(575, 10);
+            panel5.Location = new Point(801, 10);
             panel5.Name = "panel5";
             panel5.Size = new Size(10, 492);
             panel5.TabIndex = 27;
@@ -255,7 +270,7 @@
             panel6.Dock = DockStyle.Bottom;
             panel6.Location = new Point(0, 492);
             panel6.Name = "panel6";
-            panel6.Size = new Size(575, 10);
+            panel6.Size = new Size(801, 10);
             panel6.TabIndex = 28;
             // 
             // panel7
@@ -267,12 +282,87 @@
             panel7.Size = new Size(10, 482);
             panel7.TabIndex = 29;
             // 
+            // panel8
+            // 
+            panel8.BackColor = Color.DarkSalmon;
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(btn_DescargarHistorial);
+            panel8.Controls.Add(label2);
+            panel8.Location = new Point(491, 103);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(262, 44);
+            panel8.TabIndex = 31;
+            // 
+            // btn_DescargarHistorial
+            // 
+            btn_DescargarHistorial.Cursor = Cursors.Hand;
+            btn_DescargarHistorial.Image = (Image)resources.GetObject("btn_DescargarHistorial.Image");
+            btn_DescargarHistorial.Location = new Point(225, 11);
+            btn_DescargarHistorial.Name = "btn_DescargarHistorial";
+            btn_DescargarHistorial.Size = new Size(30, 23);
+            btn_DescargarHistorial.SizeMode = PictureBoxSizeMode.Zoom;
+            btn_DescargarHistorial.TabIndex = 32;
+            btn_DescargarHistorial.TabStop = false;
+            btn_DescargarHistorial.Click += btn_DescargarHistorial_Click;
+            // 
+            // label2
+            // 
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(-1, 4);
+            label2.Name = "label2";
+            label2.Size = new Size(229, 30);
+            label2.TabIndex = 13;
+            label2.Text = "Historial de partidas";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // dgv_HistorialPartidas
+            // 
+            dgv_HistorialPartidas.AllowUserToAddRows = false;
+            dgv_HistorialPartidas.AllowUserToDeleteRows = false;
+            dgv_HistorialPartidas.AllowUserToResizeColumns = false;
+            dgv_HistorialPartidas.AllowUserToResizeRows = false;
+            dgv_HistorialPartidas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            dgv_HistorialPartidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_HistorialPartidas.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgv_HistorialPartidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dgv_HistorialPartidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Window;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgv_HistorialPartidas.DefaultCellStyle = dataGridViewCellStyle8;
+            dgv_HistorialPartidas.EnableHeadersVisualStyles = false;
+            dgv_HistorialPartidas.Location = new Point(491, 146);
+            dgv_HistorialPartidas.MultiSelect = false;
+            dgv_HistorialPartidas.Name = "dgv_HistorialPartidas";
+            dgv_HistorialPartidas.ReadOnly = true;
+            dgv_HistorialPartidas.RowHeadersVisible = false;
+            dataGridViewCellStyle9.SelectionBackColor = Color.PaleGreen;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dgv_HistorialPartidas.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dgv_HistorialPartidas.RowTemplate.Height = 25;
+            dgv_HistorialPartidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_HistorialPartidas.Size = new Size(262, 275);
+            dgv_HistorialPartidas.TabIndex = 30;
+            // 
             // FrmEstadisticas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 35, 39);
-            ClientSize = new Size(585, 502);
+            ClientSize = new Size(811, 502);
+            Controls.Add(panel8);
+            Controls.Add(dgv_HistorialPartidas);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(panel5);
@@ -295,6 +385,9 @@
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)btn_crearJuego).EndInit();
+            panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)btn_DescargarHistorial).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_HistorialPartidas).EndInit();
             ResumeLayout(false);
         }
 
@@ -315,5 +408,10 @@
         private Panel panel5;
         private Panel panel6;
         private Panel panel7;
+        private Panel panel8;
+        private Label label2;
+        private DataGridView dgv_HistorialPartidas;
+        private PictureBox btn_DescargarHistorial;
+        private ToolTip toolTip1;
     }
 }

@@ -26,3 +26,9 @@ C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-wind
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmNotificacionGanador.resources
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\obj\Debug\net6.0-windows\Interfaz.FrmEstadisticas.resources
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Interfaz\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

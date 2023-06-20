@@ -11,11 +11,15 @@ using System.Windows.Forms;
 
 namespace Interfaz {
     public partial class FrmNotificacionGanador : Form {
+        Partida? partidaFinalizada;
+
         public FrmNotificacionGanador() {
             InitializeComponent();
         }
 
         public FrmNotificacionGanador(Partida partidaFinalizada) : this() {
+            this.partidaFinalizada = partidaFinalizada;
+
             BindingSource fuenteJugadorUno = new BindingSource();
             BindingSource fuenteJugadorDos = new BindingSource();
 
@@ -26,8 +30,7 @@ namespace Interfaz {
             dgv_JugadasJ2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             this.lbl_NPartida.Text = $"Partida N°{partidaFinalizada.Id}";
-            this.lbl_Felicitaciones.Text = $"Felicitaciones, {partidaFinalizada.Ganador!.Usuario}!";
-            this.lbl_VictoriasTotales.Text = $"Victorias totales de {partidaFinalizada.Ganador!.Usuario}: {partidaFinalizada.Ganador.PartidasGanadas}";
+            this.lbl_Felicitaciones.Text = $"Felicitaciones, {partidaFinalizada.UsuarioGanador}!";
             this.lbl_Jugador1.Text = partidaFinalizada.JugadorUno?.Usuario;
             this.lbl_Jugador2.Text = partidaFinalizada.JugadorDos?.Usuario;
             this.dgv_JugadasJ1.DataSource = fuenteJugadorUno;
@@ -40,6 +43,7 @@ namespace Interfaz {
         }
 
         private void btn_Continuar_Click(object sender, EventArgs e) {
+            Sistema.ListaPartidas.Add(this.partidaFinalizada!);
             this.Close();
         }
     }
