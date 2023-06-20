@@ -12,7 +12,7 @@ Mi nombre es Lautaro Monserrat, y tengo 19 años. A la hora de hacer este trabaj
 La aplicacion es un simulador del juego de mesa Generala, al correrla te permite logearte o registrarte con una cuenta de mail ficticia. Una vez en el menu principal, el usuario podra ser capaz de crear jugadores, tambien ficticios, y poder hacer que jueguen en salas de juego. Es decir, se va a poder crear una nueva sala de juego en donde se seleccione 2 jugadores distintos y se enfrentaran entre ellos. Una vez creadas las salas, hay 2 botones los cuales permiten iniciar el juego y frenar el juego. Por ultimo, habra una seccion de Estadisticas historicas, en donde se podran consultar las victorias y puntajes en total de cada jugador, y ver el historial de todas las partidas jugadas, pudiendo descargar el registro de juego de cada partida.
 
 ## Diagrama de clases
-
+![DiagramaDeClases](https://github.com/llauu/Monserrat.Lautaro.TP2/assets/40183232/7265b761-0d21-41bc-895c-dd1866db5017)
 
 ## Justificacion tecnica
 - **Excepciones:** Este tema lo aplique para la realizacion de validaciones. Ya que me parecio que me permitia manejar los errores de una manera mas sencilla, ya que si alguna validacion daba como incorrecta, en vez de tener que retornar un string con el error generado para utilizarlo en un Windows Forms, podia atraparlo desde el mismo Form con un catch(Exception ex), y mostrarlo como un ex.Message.
