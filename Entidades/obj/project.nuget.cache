@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fLLAsEdX8OnZHpK4HJok25Pl3fv7fg1OKy+Mj+JzhqOGEQJF+yzS7QaDdSMufHrgT5Q2iN43LpGED18ResJ0Gw==",
+  "dgSpecHash": "R+yvU8OOFo76yskHmEsNMtSkrye+D3KDD1VLJLZNauj6sgX1cCRSUGlCjNRucy+zwTGKQqiqQPU/j/FeSCI5rQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\monse\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\monse\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

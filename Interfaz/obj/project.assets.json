@@ -537,11 +537,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Interfaz\\Interfaz.csproj",
+      "projectUniqueName": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Interfaz\\Interfaz.csproj",
       "projectName": "Interfaz",
-      "projectPath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Interfaz\\Interfaz.csproj",
+      "projectPath": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Interfaz\\Interfaz.csproj",
       "packagesPath": "C:\\Users\\monse\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Interfaz\\obj\\",
+      "outputPath": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Interfaz\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\monse\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -558,8 +558,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\Entidades\\Entidades.csproj"
+            "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\Entidades\\Entidades.csproj"
             }
           }
         }

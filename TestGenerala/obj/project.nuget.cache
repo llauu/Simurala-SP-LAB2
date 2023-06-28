@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CuJw6EkJCF1CzlvbgxjmLsysIuP1AO9O8x+bpuxFfkFX0FXZwPIW1WXB99BevkjIFmgS4GJ7NBIaQ8uzzRjIIw==",
+  "dgSpecHash": "Esa1xvkSZbOeR4eQNZyjT5yy+f3LlouJ1mXA5o9uxRUqayGL1TUEM9129BeCnlOLc19wAFYQRXH6P77KIfEKVw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\monse\\source\\repos\\Monserrat.Lautaro.TP2\\TestGenerala\\TestGenerala.csproj",
+  "projectFilePath": "C:\\Users\\monse\\source\\repos\\Simurala.SP.LAB2\\TestGenerala\\TestGenerala.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\monse\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\monse\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
