@@ -121,7 +121,7 @@ namespace Entidades {
         }
 
         public void JugarPartida() {
-            int turnosMaximos = 8;
+            int turnosMaximos = 20;
             int turnosJugados = 0;
             int puntajeJugadorUno;
             int puntajeJugadorDos;

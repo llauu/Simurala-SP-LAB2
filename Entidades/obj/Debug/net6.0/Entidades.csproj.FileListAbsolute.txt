@@ -10,3 +10,15 @@ C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Entidades\obj\Debug\net6.0\Ent
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Entidades\obj\Debug\net6.0\refint\Entidades.dll
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Entidades\obj\Debug\net6.0\Entidades.pdb
 C:\Users\monse\source\repos\Monserrat.Lautaro.TP2\Entidades\obj\Debug\net6.0\ref\Entidades.dll
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\bin\Debug\net6.0\Entidades.deps.json
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\bin\Debug\net6.0\Entidades.dll
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\bin\Debug\net6.0\Entidades.pdb
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfo.cs
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.dll
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\refint\Entidades.dll
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\Entidades.pdb
+C:\Users\monse\source\repos\Simurala.SP.LAB2\Entidades\obj\Debug\net6.0\ref\Entidades.dll

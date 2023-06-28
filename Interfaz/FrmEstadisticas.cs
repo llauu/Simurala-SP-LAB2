@@ -41,18 +41,16 @@ namespace Interfaz {
                 dgv_HistorialPartidas.DataSource = null;
                 dgv_HistorialPartidas.DataSource = Sistema.ListaPartidas;
 
-                dgv_HistorialPartidas.Columns["Id"].HeaderText = "ID";
                 dgv_HistorialPartidas.Columns["JugadorUno"].HeaderText = "Jugador 1";
                 dgv_HistorialPartidas.Columns["JugadorDos"].HeaderText = "Jugador 2";
+                dgv_HistorialPartidas.Columns["UsuarioGanador"].HeaderText = "Ganador";
+                dgv_HistorialPartidas.Columns["Id"].Visible = false;
                 dgv_HistorialPartidas.Columns["JugadasJugadorUno"].Visible = false;
                 dgv_HistorialPartidas.Columns["JugadasJugadorDos"].Visible = false;
                 dgv_HistorialPartidas.Columns["PartidaIniciada"].Visible = false;
                 dgv_HistorialPartidas.Columns["RegistroDeJuego"].Visible = false;
                 dgv_HistorialPartidas.Columns["CancellationSource"].Visible = false;
                 dgv_HistorialPartidas.Columns["Cancellation"].Visible = false;
-
-                dgv_HistorialPartidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgv_HistorialPartidas.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
         }
 
